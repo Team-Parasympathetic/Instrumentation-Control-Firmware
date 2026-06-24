@@ -16,7 +16,8 @@ module timingcard_event_queue #(
     output reg  [INDEX_WIDTH-1:0]   count,
     output reg                      push_seen,
     output reg  [31:0]              last_time_lo,
-    output reg  [31:0]              last_time_hi
+    output reg  [31:0]              last_time_hi,
+    output reg  [31:0]              checksum
 );
 
     localparam [INDEX_WIDTH-1:0] MAX_COUNT = MAX_EVENTS[INDEX_WIDTH-1:0];
@@ -25,6 +26,8 @@ module timingcard_event_queue #(
 
     wire [63:0] stage_time_us;
     wire [63:0] last_time_us;
+    wire [31:0] checksum_after_time_lo;
+    wire [31:0] checksum_after_time_hi;
 
     assign stage_time_us = {stage_time_hi, stage_time_lo};
     assign last_time_us = {last_time_hi, last_time_lo};
@@ -44,6 +47,17 @@ module timingcard_event_queue #(
         end
     endfunction
 
+    function [31:0] checksum_mix;
+        input [31:0] checksum_in;
+        input [31:0] value;
+        begin
+            checksum_mix = {checksum_in[30:0], checksum_in[31]} ^ value;
+        end
+    endfunction
+
+    assign checksum_after_time_lo = checksum_mix(checksum, stage_time_lo);
+    assign checksum_after_time_hi = checksum_mix(checksum_after_time_lo, stage_time_hi);
+
     initial begin
         stage_time_lo = 32'd0;
         stage_time_hi = 32'd0;
@@ -51,6 +65,7 @@ module timingcard_event_queue #(
         push_seen = 1'b0;
         last_time_lo = 32'd0;
         last_time_hi = 32'd0;
+        checksum = 32'd0;
     end
 
     always @(posedge clk) begin
@@ -61,6 +76,7 @@ module timingcard_event_queue #(
             push_seen <= 1'b0;
             last_time_lo <= 32'd0;
             last_time_hi <= 32'd0;
+            checksum <= 32'd0;
         end else begin
             if (write_time_lo) begin
                 stage_time_lo <= write_data;
@@ -76,6 +92,7 @@ module timingcard_event_queue #(
                 push_seen <= 1'b1;
                 last_time_lo <= stage_time_lo;
                 last_time_hi <= stage_time_hi;
+                checksum <= checksum_after_time_hi;
             end
         end
     end

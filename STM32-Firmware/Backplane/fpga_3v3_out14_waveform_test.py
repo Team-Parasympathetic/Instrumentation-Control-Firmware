@@ -24,7 +24,7 @@ from fpga_mock_schedule import (
     build_upload_event,
     discover_fpga_card_slot,
     expect_ack,
-    gpio_force_low_action,
+    gpio_stop_action,
     gpio_waveform_action,
     send_and_collect,
 )
@@ -69,7 +69,7 @@ def run_waveform_test(port_name: str) -> int:
             for channel in OUT_3V3_CHANNELS
         ]
         stop_actions = [
-            gpio_force_low_action(channel)
+            gpio_stop_action(channel)
             for channel in OUT_3V3_CHANNELS
         ]
         pin_list = ", ".join(f"out_3v3[{pin}]" for pin in OUT_3V3_PINS)
@@ -91,7 +91,7 @@ def run_waveform_test(port_name: str) -> int:
             2,
             6_500_000,
             stop_actions,
-            f"{pin_list}: force low",
+            f"{pin_list}: stop",
         )
 
         expect_ack(send_and_collect(port, reader, MSG_GET_STATUS, seq, expected_frames=2), "status before start")

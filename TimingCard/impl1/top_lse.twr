@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 Lattice Synthesis Timing Report, Version  
-Mon May 04 01:44:40 2026
+Mon Jun 22 13:22:16 2026
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -18,548 +18,680 @@ Report level:    verbose report, limited to 3 items per constraint
 
 
 ================================================================================
-Constraint: create_clock -period 5.000000 -name clk1 [get_nets spi_sck_c]
+Constraint: create_clock -period 5.000000 -name clk1 [get_nets clk_c]
             4096 items scored, 4096 timing errors detected.
 --------------------------------------------------------------------------------
 
 
-Error:  The following path violates requirements by 39.402ns
-
- Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
-
-   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i14  (from spi_sck_c +)
-   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i7  (to spi_sck_c -)
-
-   Delay:                  41.769ns  (32.1% logic, 67.9% route), 34 logic levels.
-
- Constraint Details:
-
-     41.769ns data_path \u_spi_decoder/req_addr__i14 to \u_spi_decoder/tx_shift_i7 violates
-      2.500ns delay constraint less
-      0.133ns L_S requirement (totaling 2.367ns) by 39.402ns
-
- Path Details: \u_spi_decoder/req_addr__i14 to \u_spi_decoder/tx_shift_i7
-
-   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i14 (from spi_sck_c)
-Route         2   e 0.838                                  req_addr[14]
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i1_2_lut_adj_269
-Route         1   e 0.660                                  \u_spi_decoder/n6_adj_6059
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i4_4_lut_adj_268
-Route         3   e 0.879                                  \u_spi_decoder/n34440
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_649
-Route         3   e 0.879                                  n38032
-LUT4        ---     0.408              D to Z              \u_store/i21985_2_lut_3_lut_4_lut
-Route         2   e 0.798                                  n34838
-LUT4        ---     0.408              D to Z              i2_4_lut
-Route        28   e 1.417                                  n46
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_266
-Route         9   e 1.099                                  \u_spi_decoder/reg_read_valid
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i565_2_lut_rep_504_3_lut_4_lut
-Route         9   e 1.099                                  \u_spi_decoder/n37887
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i15056_4_lut_rep_709
-Route        17   e 1.269                                  \u_spi_decoder/n40436
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i22530_4_lut_3_lut
-Route         6   e 1.018                                  \u_spi_decoder/n35117
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i2_3_lut_4_lut_rep_708
-Route         7   e 1.049                                  \u_spi_decoder/n40435
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_rep_707_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n40434
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_168
-Route         2   e 0.798                                  \u_spi_decoder/n32759
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_4_lut_adj_162
-Route         3   e 0.879                                  \u_spi_decoder/n32850
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_186
-Route         3   e 0.879                                  \u_spi_decoder/n32638
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n34769
-LUT4        ---     0.408              D to Z              \u_spi_decoder/xor_189_i15_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/n2260
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_185
-Route         3   e 0.879                                  \u_spi_decoder/n32577
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n34836
-LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_419
-Route         3   e 0.879                                  \u_spi_decoder/n37802
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i6904_2_lut_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n2773
-LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n2874
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_413
-Route         4   e 0.937                                  \u_spi_decoder/n37796
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6888_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n3080
-LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_3_lut_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/resp_crc_15__N_5411[14]
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i6880_2_lut_rep_403_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n37786
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i21894_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n34737
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i21895_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5130[14]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6864_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5459[2]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/n25911_bdd_4_lut
-Route         1   e 0.020                                  \u_spi_decoder/n37655
-MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23794
-Route         1   e 0.660                                  \u_spi_decoder/n37656
-LUT4        ---     0.408              D to Z              \u_spi_decoder/n37657_bdd_3_lut_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n37658
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i22498_3_lut
-Route         1   e 0.020                                  \u_spi_decoder/n16
-MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1572_i8
-Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_4948[7]
-                  --------
-                   41.769  (32.1% logic, 67.9% route), 34 logic levels.
-
-
-Error:  The following path violates requirements by 39.402ns
-
- Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
-
-   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i14  (from spi_sck_c +)
-   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i2  (to spi_sck_c -)
-
-   Delay:                  41.769ns  (32.1% logic, 67.9% route), 34 logic levels.
-
- Constraint Details:
-
-     41.769ns data_path \u_spi_decoder/req_addr__i14 to \u_spi_decoder/tx_shift_i2 violates
-      2.500ns delay constraint less
-      0.133ns L_S requirement (totaling 2.367ns) by 39.402ns
-
- Path Details: \u_spi_decoder/req_addr__i14 to \u_spi_decoder/tx_shift_i2
-
-   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i14 (from spi_sck_c)
-Route         2   e 0.838                                  req_addr[14]
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i1_2_lut_adj_269
-Route         1   e 0.660                                  \u_spi_decoder/n6_adj_6059
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i4_4_lut_adj_268
-Route         3   e 0.879                                  \u_spi_decoder/n34440
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_649
-Route         3   e 0.879                                  n38032
-LUT4        ---     0.408              D to Z              \u_store/i21985_2_lut_3_lut_4_lut
-Route         2   e 0.798                                  n34838
-LUT4        ---     0.408              D to Z              i2_4_lut
-Route        28   e 1.417                                  n46
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_266
-Route         9   e 1.099                                  \u_spi_decoder/reg_read_valid
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i565_2_lut_rep_504_3_lut_4_lut
-Route         9   e 1.099                                  \u_spi_decoder/n37887
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i15056_4_lut_rep_709
-Route        17   e 1.269                                  \u_spi_decoder/n40436
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i22530_4_lut_3_lut
-Route         6   e 1.018                                  \u_spi_decoder/n35117
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i2_3_lut_4_lut_rep_708
-Route         7   e 1.049                                  \u_spi_decoder/n40435
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_rep_707_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n40434
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_168
-Route         2   e 0.798                                  \u_spi_decoder/n32759
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_4_lut_adj_162
-Route         3   e 0.879                                  \u_spi_decoder/n32850
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_186
-Route         3   e 0.879                                  \u_spi_decoder/n32638
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n34769
-LUT4        ---     0.408              D to Z              \u_spi_decoder/xor_189_i15_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/n2260
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_185
-Route         3   e 0.879                                  \u_spi_decoder/n32577
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n34836
-LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_419
-Route         3   e 0.879                                  \u_spi_decoder/n37802
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i6904_2_lut_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n2773
-LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n2874
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_413
-Route         4   e 0.937                                  \u_spi_decoder/n37796
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6888_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n3080
-LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_3_lut_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/resp_crc_15__N_5411[14]
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i6880_2_lut_rep_403_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n37786
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i21894_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n34737
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i21895_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5130[14]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6864_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5459[2]
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i22124_3_lut_4_lut
-Route         1   e 0.020                                  \u_spi_decoder/n34977
-MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i22125
-Route         1   e 0.660                                  \u_spi_decoder/n34978
-LUT4        ---     0.408              B to Z              \u_spi_decoder/mux_1522_i3_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n2273
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i22503_3_lut
-Route         1   e 0.020                                  \u_spi_decoder/n2331
-MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1572_i3
-Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_4948[2]
-                  --------
-                   41.769  (32.1% logic, 67.9% route), 34 logic levels.
-
-
-Error:  The following path violates requirements by 39.402ns
-
- Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
-
-   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i13  (from spi_sck_c +)
-   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i7  (to spi_sck_c -)
-
-   Delay:                  41.769ns  (32.1% logic, 67.9% route), 34 logic levels.
-
- Constraint Details:
-
-     41.769ns data_path \u_spi_decoder/req_addr__i13 to \u_spi_decoder/tx_shift_i7 violates
-      2.500ns delay constraint less
-      0.133ns L_S requirement (totaling 2.367ns) by 39.402ns
-
- Path Details: \u_spi_decoder/req_addr__i13 to \u_spi_decoder/tx_shift_i7
-
-   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i13 (from spi_sck_c)
-Route         2   e 0.838                                  req_addr[13]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i1_2_lut_adj_269
-Route         1   e 0.660                                  \u_spi_decoder/n6_adj_6059
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i4_4_lut_adj_268
-Route         3   e 0.879                                  \u_spi_decoder/n34440
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_649
-Route         3   e 0.879                                  n38032
-LUT4        ---     0.408              D to Z              \u_store/i21985_2_lut_3_lut_4_lut
-Route         2   e 0.798                                  n34838
-LUT4        ---     0.408              D to Z              i2_4_lut
-Route        28   e 1.417                                  n46
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_266
-Route         9   e 1.099                                  \u_spi_decoder/reg_read_valid
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i565_2_lut_rep_504_3_lut_4_lut
-Route         9   e 1.099                                  \u_spi_decoder/n37887
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i15056_4_lut_rep_709
-Route        17   e 1.269                                  \u_spi_decoder/n40436
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i22530_4_lut_3_lut
-Route         6   e 1.018                                  \u_spi_decoder/n35117
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i2_3_lut_4_lut_rep_708
-Route         7   e 1.049                                  \u_spi_decoder/n40435
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_rep_707_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n40434
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_168
-Route         2   e 0.798                                  \u_spi_decoder/n32759
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i1_3_lut_4_lut_adj_162
-Route         3   e 0.879                                  \u_spi_decoder/n32850
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_186
-Route         3   e 0.879                                  \u_spi_decoder/n32638
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n34769
-LUT4        ---     0.408              D to Z              \u_spi_decoder/xor_189_i15_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/n2260
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_185
-Route         3   e 0.879                                  \u_spi_decoder/n32577
-LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n34836
-LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_419
-Route         3   e 0.879                                  \u_spi_decoder/n37802
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i6904_2_lut_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n2773
-LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/n2874
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_rep_413
-Route         4   e 0.937                                  \u_spi_decoder/n37796
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6888_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n3080
-LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_3_lut_4_lut
-Route         5   e 0.981                                  \u_spi_decoder/resp_crc_15__N_5411[14]
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i6880_2_lut_rep_403_4_lut
-Route         2   e 0.798                                  \u_spi_decoder/n37786
-LUT4        ---     0.408              D to Z              \u_spi_decoder/i21894_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n34737
-LUT4        ---     0.408              C to Z              \u_spi_decoder/i21895_3_lut_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5130[14]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/i6864_4_lut
-Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5459[2]
-LUT4        ---     0.408              B to Z              \u_spi_decoder/n25911_bdd_4_lut
-Route         1   e 0.020                                  \u_spi_decoder/n37655
-MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23794
-Route         1   e 0.660                                  \u_spi_decoder/n37656
-LUT4        ---     0.408              D to Z              \u_spi_decoder/n37657_bdd_3_lut_4_lut
-Route         1   e 0.660                                  \u_spi_decoder/n37658
-LUT4        ---     0.408              A to Z              \u_spi_decoder/i22498_3_lut
-Route         1   e 0.020                                  \u_spi_decoder/n16
-MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1572_i8
-Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_4948[7]
-                  --------
-                   41.769  (32.1% logic, 67.9% route), 34 logic levels.
-
-Warning: 41.902 ns is the maximum delay for this constraint.
-
-
-
-================================================================================
-Constraint: create_clock -period 5.000000 -name clk0 [get_nets clk_c]
-            4096 items scored, 4096 timing errors detected.
---------------------------------------------------------------------------------
-
-
-Error:  The following path violates requirements by 11.232ns
+Error:  The following path violates requirements by 16.158ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
    Source:         FD1P3IX    CK             \u_store/u_event_queue/count__i3  (from clk_c +)
-   Destination:    FD1P3IX    D              \u_store/event_countdown__i0  (to clk_c +)
+   Destination:    FD1P3IX    D              \u_store/event_countdown__i47  (to clk_c +)
 
-   Delay:                  16.099ns  (43.4% logic, 56.6% route), 32 logic levels.
+   Delay:                  21.025ns  (52.4% logic, 47.6% route), 56 logic levels.
 
  Constraint Details:
 
-     16.099ns data_path \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i0 violates
+     21.025ns data_path \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i47 violates
       5.000ns delay constraint less
-      0.133ns L_S requirement (totaling 4.867ns) by 11.232ns
+      0.133ns L_S requirement (totaling 4.867ns) by 16.158ns
 
- Path Details: \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i0
+ Path Details: \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i47
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
 L_CO        ---     0.367             CK to Q              \u_store/u_event_queue/count__i3 (from clk_c)
-Route        14   e 1.301                                  \u_store/event_count[3]
-LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_203_i6_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n6_adj_5998
-LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_203_i8_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n8_adj_5987
-LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_203_i10_4_lut
-Route        48   e 1.438                                  \u_store/n10
-LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_203_i12_3_lut
-Route        59   e 1.578                                  \u_store/sync_state_N_327
-A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2592_add_2_1
-Route         1   e 0.020                                  \u_store/n31487
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_3
-Route         1   e 0.020                                  \u_store/n31488
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_5
-Route         1   e 0.020                                  \u_store/n31489
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_7
-Route         1   e 0.020                                  \u_store/n31490
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_9
-Route         1   e 0.020                                  \u_store/n31491
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_11
-Route         1   e 0.020                                  \u_store/n31492
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_13
-Route         1   e 0.020                                  \u_store/n31493
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_15
-Route         1   e 0.020                                  \u_store/n31494
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_17
-Route         1   e 0.020                                  \u_store/n31495
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_19
-Route         1   e 0.020                                  \u_store/n31496
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_21
-Route         1   e 0.020                                  \u_store/n31497
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_23
-Route         1   e 0.020                                  \u_store/n31498
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_25
-Route         1   e 0.020                                  \u_store/n31499
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_27
-Route         1   e 0.020                                  \u_store/n31500
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_29
-Route         1   e 0.020                                  \u_store/n31501
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_31
-Route         1   e 0.020                                  \u_store/n31502
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_33
-Route         1   e 0.020                                  \u_store/n31503
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_35
-Route         1   e 0.020                                  \u_store/n31504
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_37
-Route         1   e 0.020                                  \u_store/n31505
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_39
-Route         1   e 0.020                                  \u_store/n31506
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_41
-Route         1   e 0.020                                  \u_store/n31507
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_43
-Route         1   e 0.020                                  \u_store/n31508
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_45
-Route         1   e 0.020                                  \u_store/n31509
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_47
-Route         1   e 0.020                                  \u_store/n31510
-FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2592_add_2_49
-Route        48   e 1.678                                  \u_store/n4762
-LUT4        ---     0.408              A to Z              \u_store/i3_4_lut_4_lut
-Route         1   e 0.660                                  \u_store/n32827
-LUT4        ---     0.408              A to Z              \u_store/mux_125_Mux_0_i3_3_lut
-Route         1   e 0.660                                  \u_store/n1272
+Route        16   e 1.306                                  \u_store/event_count[3]
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i6_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n6_adj_6134
+LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_214_i8_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n8_adj_6135
+LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_214_i10_4_lut
+Route        49   e 1.439                                  \u_store/n10
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i12_3_lut_rep_663
+Route        61   e 1.579                                  \u_store/n29958
+A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2506_add_2_1
+Route         1   e 0.020                                  \u_store/n23162
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_3
+Route         1   e 0.020                                  \u_store/n23163
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_5
+Route         1   e 0.020                                  \u_store/n23164
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_7
+Route         1   e 0.020                                  \u_store/n23165
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_9
+Route         1   e 0.020                                  \u_store/n23166
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_11
+Route         1   e 0.020                                  \u_store/n23167
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_13
+Route         1   e 0.020                                  \u_store/n23168
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_15
+Route         1   e 0.020                                  \u_store/n23169
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_17
+Route         1   e 0.020                                  \u_store/n23170
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_19
+Route         1   e 0.020                                  \u_store/n23171
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_21
+Route         1   e 0.020                                  \u_store/n23172
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_23
+Route         1   e 0.020                                  \u_store/n23173
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_25
+Route         1   e 0.020                                  \u_store/n23174
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_27
+Route         1   e 0.020                                  \u_store/n23175
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_29
+Route         1   e 0.020                                  \u_store/n23176
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_31
+Route         1   e 0.020                                  \u_store/n23177
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_33
+Route         1   e 0.020                                  \u_store/n23178
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_35
+Route         1   e 0.020                                  \u_store/n23179
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_37
+Route         1   e 0.020                                  \u_store/n23180
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_39
+Route         1   e 0.020                                  \u_store/n23181
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_41
+Route         1   e 0.020                                  \u_store/n23182
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_43
+Route         1   e 0.020                                  \u_store/n23183
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_45
+Route         1   e 0.020                                  \u_store/n23184
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_47
+Route         1   e 0.020                                  \u_store/n23185
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2506_add_2_49
+Route         1   e 0.660                                  \u_store/n5217
+LUT4        ---     0.408              B to Z              \u_store/i2_2_lut
+Route        48   e 1.438                                  \u_store/n12096
+LUT4        ---     0.408              B to Z              \u_store/i3_4_lut
+Route         1   e 0.660                                  \u_store/n24657
+A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_92_add_2_3
+Route         1   e 0.020                                  \u_store/n24028
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_5
+Route         1   e 0.020                                  \u_store/n24029
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_7
+Route         1   e 0.020                                  \u_store/n24030
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_9
+Route         1   e 0.020                                  \u_store/n24031
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_11
+Route         1   e 0.020                                  \u_store/n24032
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_13
+Route         1   e 0.020                                  \u_store/n24033
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_15
+Route         1   e 0.020                                  \u_store/n24034
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_17
+Route         1   e 0.020                                  \u_store/n24035
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_19
+Route         1   e 0.020                                  \u_store/n24036
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_21
+Route         1   e 0.020                                  \u_store/n24037
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_23
+Route         1   e 0.020                                  \u_store/n24038
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_25
+Route         1   e 0.020                                  \u_store/n24039
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_27
+Route         1   e 0.020                                  \u_store/n24040
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_29
+Route         1   e 0.020                                  \u_store/n24041
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_31
+Route         1   e 0.020                                  \u_store/n24042
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_33
+Route         1   e 0.020                                  \u_store/n24043
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_35
+Route         1   e 0.020                                  \u_store/n24044
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_37
+Route         1   e 0.020                                  \u_store/n24045
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_39
+Route         1   e 0.020                                  \u_store/n24046
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_41
+Route         1   e 0.020                                  \u_store/n24047
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_43
+Route         1   e 0.020                                  \u_store/n24048
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_45
+Route         1   e 0.020                                  \u_store/n24049
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_47
+Route         1   e 0.020                                  \u_store/n24050
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_92_add_2_49
+Route         1   e 0.660                                  \u_store/n904
                   --------
-                   16.099  (43.4% logic, 56.6% route), 32 logic levels.
+                   21.025  (52.4% logic, 47.6% route), 56 logic levels.
 
 
-Error:  The following path violates requirements by 11.070ns
+Error:  The following path violates requirements by 16.158ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
-   Source:         FD1S3AX    CK             \u_store/event_head__i2  (from clk_c +)
-   Destination:    FD1P3IX    D              \u_store/event_countdown__i0  (to clk_c +)
+   Source:         FD1P3IX    CK             \u_store/u_event_queue/count__i3  (from clk_c +)
+   Destination:    FD1P3IX    D              \u_store/event_countdown__i47  (to clk_c +)
 
-   Delay:                  15.937ns  (43.8% logic, 56.2% route), 32 logic levels.
+   Delay:                  21.025ns  (52.4% logic, 47.6% route), 56 logic levels.
 
  Constraint Details:
 
-     15.937ns data_path \u_store/event_head__i2 to \u_store/event_countdown__i0 violates
+     21.025ns data_path \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i47 violates
       5.000ns delay constraint less
-      0.133ns L_S requirement (totaling 4.867ns) by 11.070ns
+      0.133ns L_S requirement (totaling 4.867ns) by 16.158ns
 
- Path Details: \u_store/event_head__i2 to \u_store/event_countdown__i0
+ Path Details: \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i47
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.367             CK to Q              \u_store/event_head__i2 (from clk_c)
-Route         9   e 1.139                                  \u_store/event_head[2]
-LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_203_i6_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n6_adj_5998
-LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_203_i8_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n8_adj_5987
-LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_203_i10_4_lut
-Route        48   e 1.438                                  \u_store/n10
-LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_203_i12_3_lut
-Route        59   e 1.578                                  \u_store/sync_state_N_327
-A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2592_add_2_1
-Route         1   e 0.020                                  \u_store/n31487
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_3
-Route         1   e 0.020                                  \u_store/n31488
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_5
-Route         1   e 0.020                                  \u_store/n31489
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_7
-Route         1   e 0.020                                  \u_store/n31490
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_9
-Route         1   e 0.020                                  \u_store/n31491
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_11
-Route         1   e 0.020                                  \u_store/n31492
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_13
-Route         1   e 0.020                                  \u_store/n31493
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_15
-Route         1   e 0.020                                  \u_store/n31494
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_17
-Route         1   e 0.020                                  \u_store/n31495
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_19
-Route         1   e 0.020                                  \u_store/n31496
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_21
-Route         1   e 0.020                                  \u_store/n31497
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_23
-Route         1   e 0.020                                  \u_store/n31498
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_25
-Route         1   e 0.020                                  \u_store/n31499
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_27
-Route         1   e 0.020                                  \u_store/n31500
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_29
-Route         1   e 0.020                                  \u_store/n31501
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_31
-Route         1   e 0.020                                  \u_store/n31502
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_33
-Route         1   e 0.020                                  \u_store/n31503
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_35
-Route         1   e 0.020                                  \u_store/n31504
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_37
-Route         1   e 0.020                                  \u_store/n31505
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_39
-Route         1   e 0.020                                  \u_store/n31506
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_41
-Route         1   e 0.020                                  \u_store/n31507
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_43
-Route         1   e 0.020                                  \u_store/n31508
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_45
-Route         1   e 0.020                                  \u_store/n31509
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_47
-Route         1   e 0.020                                  \u_store/n31510
-FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2592_add_2_49
-Route        48   e 1.678                                  \u_store/n4762
-LUT4        ---     0.408              A to Z              \u_store/i3_4_lut_4_lut
-Route         1   e 0.660                                  \u_store/n32827
-LUT4        ---     0.408              A to Z              \u_store/mux_125_Mux_0_i3_3_lut
-Route         1   e 0.660                                  \u_store/n1272
+L_CO        ---     0.367             CK to Q              \u_store/u_event_queue/count__i3 (from clk_c)
+Route        16   e 1.306                                  \u_store/event_count[3]
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i6_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n6_adj_6134
+LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_214_i8_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n8_adj_6135
+LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_214_i10_4_lut
+Route        49   e 1.439                                  \u_store/n10
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i12_3_lut_rep_663
+Route        61   e 1.579                                  \u_store/n29958
+A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2506_add_2_1
+Route         1   e 0.020                                  \u_store/n23162
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_3
+Route         1   e 0.020                                  \u_store/n23163
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_5
+Route         1   e 0.020                                  \u_store/n23164
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_7
+Route         1   e 0.020                                  \u_store/n23165
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_9
+Route         1   e 0.020                                  \u_store/n23166
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_11
+Route         1   e 0.020                                  \u_store/n23167
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_13
+Route         1   e 0.020                                  \u_store/n23168
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_15
+Route         1   e 0.020                                  \u_store/n23169
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_17
+Route         1   e 0.020                                  \u_store/n23170
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_19
+Route         1   e 0.020                                  \u_store/n23171
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_21
+Route         1   e 0.020                                  \u_store/n23172
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_23
+Route         1   e 0.020                                  \u_store/n23173
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_25
+Route         1   e 0.020                                  \u_store/n23174
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_27
+Route         1   e 0.020                                  \u_store/n23175
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_29
+Route         1   e 0.020                                  \u_store/n23176
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_31
+Route         1   e 0.020                                  \u_store/n23177
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_33
+Route         1   e 0.020                                  \u_store/n23178
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_35
+Route         1   e 0.020                                  \u_store/n23179
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_37
+Route         1   e 0.020                                  \u_store/n23180
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_39
+Route         1   e 0.020                                  \u_store/n23181
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_41
+Route         1   e 0.020                                  \u_store/n23182
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_43
+Route         1   e 0.020                                  \u_store/n23183
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_45
+Route         1   e 0.020                                  \u_store/n23184
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_47
+Route         1   e 0.020                                  \u_store/n23185
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2506_add_2_49
+Route         1   e 0.660                                  \u_store/n5217
+LUT4        ---     0.408              B to Z              \u_store/i2_2_lut
+Route        48   e 1.438                                  \u_store/n12096
+LUT4        ---     0.408              D to Z              \u_store/i18597_4_lut
+Route         1   e 0.660                                  \u_store/n23014
+A1_TO_FCO   ---     0.684           A[2] to COUT           \u_store/sub_92_add_2_3
+Route         1   e 0.020                                  \u_store/n24028
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_5
+Route         1   e 0.020                                  \u_store/n24029
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_7
+Route         1   e 0.020                                  \u_store/n24030
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_9
+Route         1   e 0.020                                  \u_store/n24031
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_11
+Route         1   e 0.020                                  \u_store/n24032
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_13
+Route         1   e 0.020                                  \u_store/n24033
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_15
+Route         1   e 0.020                                  \u_store/n24034
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_17
+Route         1   e 0.020                                  \u_store/n24035
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_19
+Route         1   e 0.020                                  \u_store/n24036
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_21
+Route         1   e 0.020                                  \u_store/n24037
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_23
+Route         1   e 0.020                                  \u_store/n24038
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_25
+Route         1   e 0.020                                  \u_store/n24039
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_27
+Route         1   e 0.020                                  \u_store/n24040
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_29
+Route         1   e 0.020                                  \u_store/n24041
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_31
+Route         1   e 0.020                                  \u_store/n24042
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_33
+Route         1   e 0.020                                  \u_store/n24043
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_35
+Route         1   e 0.020                                  \u_store/n24044
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_37
+Route         1   e 0.020                                  \u_store/n24045
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_39
+Route         1   e 0.020                                  \u_store/n24046
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_41
+Route         1   e 0.020                                  \u_store/n24047
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_43
+Route         1   e 0.020                                  \u_store/n24048
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_45
+Route         1   e 0.020                                  \u_store/n24049
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_47
+Route         1   e 0.020                                  \u_store/n24050
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_92_add_2_49
+Route         1   e 0.660                                  \u_store/n904
                   --------
-                   15.937  (43.8% logic, 56.2% route), 32 logic levels.
+                   21.025  (52.4% logic, 47.6% route), 56 logic levels.
 
 
-Error:  The following path violates requirements by 11.046ns
+Error:  The following path violates requirements by 16.158ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
-   Source:         FD1S3AX    CK             \u_store/event_head__i3  (from clk_c +)
-   Destination:    FD1P3IX    D              \u_store/event_countdown__i0  (to clk_c +)
+   Source:         FD1P3IX    CK             \u_store/u_event_queue/count__i3  (from clk_c +)
+   Destination:    FD1P3IX    D              \u_store/event_countdown__i46  (to clk_c +)
 
-   Delay:                  15.913ns  (43.9% logic, 56.1% route), 32 logic levels.
+   Delay:                  21.025ns  (52.4% logic, 47.6% route), 56 logic levels.
 
  Constraint Details:
 
-     15.913ns data_path \u_store/event_head__i3 to \u_store/event_countdown__i0 violates
+     21.025ns data_path \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i46 violates
       5.000ns delay constraint less
-      0.133ns L_S requirement (totaling 4.867ns) by 11.046ns
+      0.133ns L_S requirement (totaling 4.867ns) by 16.158ns
 
- Path Details: \u_store/event_head__i3 to \u_store/event_countdown__i0
+ Path Details: \u_store/u_event_queue/count__i3 to \u_store/event_countdown__i46
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.367             CK to Q              \u_store/event_head__i3 (from clk_c)
-Route         8   e 1.115                                  \u_store/event_head[3]
-LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_203_i6_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n6_adj_5998
-LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_203_i8_3_lut_3_lut
-Route         1   e 0.660                                  \u_store/n8_adj_5987
-LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_203_i10_4_lut
-Route        48   e 1.438                                  \u_store/n10
-LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_203_i12_3_lut
-Route        59   e 1.578                                  \u_store/sync_state_N_327
-A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2592_add_2_1
-Route         1   e 0.020                                  \u_store/n31487
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_3
-Route         1   e 0.020                                  \u_store/n31488
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_5
-Route         1   e 0.020                                  \u_store/n31489
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_7
-Route         1   e 0.020                                  \u_store/n31490
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_9
-Route         1   e 0.020                                  \u_store/n31491
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_11
-Route         1   e 0.020                                  \u_store/n31492
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_13
-Route         1   e 0.020                                  \u_store/n31493
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_15
-Route         1   e 0.020                                  \u_store/n31494
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_17
-Route         1   e 0.020                                  \u_store/n31495
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_19
-Route         1   e 0.020                                  \u_store/n31496
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_21
-Route         1   e 0.020                                  \u_store/n31497
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_23
-Route         1   e 0.020                                  \u_store/n31498
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_25
-Route         1   e 0.020                                  \u_store/n31499
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_27
-Route         1   e 0.020                                  \u_store/n31500
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_29
-Route         1   e 0.020                                  \u_store/n31501
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_31
-Route         1   e 0.020                                  \u_store/n31502
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_33
-Route         1   e 0.020                                  \u_store/n31503
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_35
-Route         1   e 0.020                                  \u_store/n31504
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_37
-Route         1   e 0.020                                  \u_store/n31505
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_39
-Route         1   e 0.020                                  \u_store/n31506
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_41
-Route         1   e 0.020                                  \u_store/n31507
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_43
-Route         1   e 0.020                                  \u_store/n31508
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_45
-Route         1   e 0.020                                  \u_store/n31509
-FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2592_add_2_47
-Route         1   e 0.020                                  \u_store/n31510
-FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2592_add_2_49
-Route        48   e 1.678                                  \u_store/n4762
-LUT4        ---     0.408              A to Z              \u_store/i3_4_lut_4_lut
-Route         1   e 0.660                                  \u_store/n32827
-LUT4        ---     0.408              A to Z              \u_store/mux_125_Mux_0_i3_3_lut
-Route         1   e 0.660                                  \u_store/n1272
+L_CO        ---     0.367             CK to Q              \u_store/u_event_queue/count__i3 (from clk_c)
+Route        16   e 1.306                                  \u_store/event_count[3]
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i6_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n6_adj_6134
+LUT4        ---     0.408              C to Z              \u_store/event_count_5__I_0_214_i8_3_lut_3_lut
+Route         1   e 0.660                                  \u_store/n8_adj_6135
+LUT4        ---     0.408              B to Z              \u_store/event_count_5__I_0_214_i10_4_lut
+Route        49   e 1.439                                  \u_store/n10
+LUT4        ---     0.408              A to Z              \u_store/event_count_5__I_0_214_i12_3_lut_rep_663
+Route        61   e 1.579                                  \u_store/n29958
+A1_TO_FCO   ---     0.684           C[2] to COUT           \u_store/sub_2506_add_2_1
+Route         1   e 0.020                                  \u_store/n23162
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_3
+Route         1   e 0.020                                  \u_store/n23163
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_5
+Route         1   e 0.020                                  \u_store/n23164
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_7
+Route         1   e 0.020                                  \u_store/n23165
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_9
+Route         1   e 0.020                                  \u_store/n23166
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_11
+Route         1   e 0.020                                  \u_store/n23167
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_13
+Route         1   e 0.020                                  \u_store/n23168
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_15
+Route         1   e 0.020                                  \u_store/n23169
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_17
+Route         1   e 0.020                                  \u_store/n23170
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_19
+Route         1   e 0.020                                  \u_store/n23171
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_21
+Route         1   e 0.020                                  \u_store/n23172
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_23
+Route         1   e 0.020                                  \u_store/n23173
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_25
+Route         1   e 0.020                                  \u_store/n23174
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_27
+Route         1   e 0.020                                  \u_store/n23175
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_29
+Route         1   e 0.020                                  \u_store/n23176
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_31
+Route         1   e 0.020                                  \u_store/n23177
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_33
+Route         1   e 0.020                                  \u_store/n23178
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_35
+Route         1   e 0.020                                  \u_store/n23179
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_37
+Route         1   e 0.020                                  \u_store/n23180
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_39
+Route         1   e 0.020                                  \u_store/n23181
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_41
+Route         1   e 0.020                                  \u_store/n23182
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_43
+Route         1   e 0.020                                  \u_store/n23183
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_45
+Route         1   e 0.020                                  \u_store/n23184
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_2506_add_2_47
+Route         1   e 0.020                                  \u_store/n23185
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_2506_add_2_49
+Route         1   e 0.660                                  \u_store/n5217
+LUT4        ---     0.408              B to Z              \u_store/i2_2_lut
+Route        48   e 1.438                                  \u_store/n12096
+LUT4        ---     0.408              D to Z              \u_store/i18597_4_lut
+Route         1   e 0.660                                  \u_store/n23014
+A1_TO_FCO   ---     0.684           A[2] to COUT           \u_store/sub_92_add_2_3
+Route         1   e 0.020                                  \u_store/n24028
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_5
+Route         1   e 0.020                                  \u_store/n24029
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_7
+Route         1   e 0.020                                  \u_store/n24030
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_9
+Route         1   e 0.020                                  \u_store/n24031
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_11
+Route         1   e 0.020                                  \u_store/n24032
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_13
+Route         1   e 0.020                                  \u_store/n24033
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_15
+Route         1   e 0.020                                  \u_store/n24034
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_17
+Route         1   e 0.020                                  \u_store/n24035
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_19
+Route         1   e 0.020                                  \u_store/n24036
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_21
+Route         1   e 0.020                                  \u_store/n24037
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_23
+Route         1   e 0.020                                  \u_store/n24038
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_25
+Route         1   e 0.020                                  \u_store/n24039
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_27
+Route         1   e 0.020                                  \u_store/n24040
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_29
+Route         1   e 0.020                                  \u_store/n24041
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_31
+Route         1   e 0.020                                  \u_store/n24042
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_33
+Route         1   e 0.020                                  \u_store/n24043
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_35
+Route         1   e 0.020                                  \u_store/n24044
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_37
+Route         1   e 0.020                                  \u_store/n24045
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_39
+Route         1   e 0.020                                  \u_store/n24046
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_41
+Route         1   e 0.020                                  \u_store/n24047
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_43
+Route         1   e 0.020                                  \u_store/n24048
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_45
+Route         1   e 0.020                                  \u_store/n24049
+FCI_TO_FCO  ---     0.130            CIN to COUT           \u_store/sub_92_add_2_47
+Route         1   e 0.020                                  \u_store/n24050
+FCI_TO_F    ---     0.495            CIN to S[2]           \u_store/sub_92_add_2_49
+Route         1   e 0.660                                  \u_store/n905
                   --------
-                   15.913  (43.9% logic, 56.1% route), 32 logic levels.
+                   21.025  (52.4% logic, 47.6% route), 56 logic levels.
 
-Warning: 16.232 ns is the maximum delay for this constraint.
+Warning: 21.158 ns is the maximum delay for this constraint.
+
+
+
+================================================================================
+Constraint: create_clock -period 5.000000 -name clk0 [get_nets spi_sck_c]
+            4096 items scored, 4096 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Error:  The following path violates requirements by 35.814ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i10  (from spi_sck_c +)
+   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i7  (to spi_sck_c -)
+
+   Delay:                  38.181ns  (32.4% logic, 67.6% route), 32 logic levels.
+
+ Constraint Details:
+
+     38.181ns data_path \u_spi_decoder/req_addr__i10 to \u_spi_decoder/tx_shift_i7 violates
+      2.500ns delay constraint less
+      0.133ns L_S requirement (totaling 2.367ns) by 35.814ns
+
+ Path Details: \u_spi_decoder/req_addr__i10 to \u_spi_decoder/tx_shift_i7
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i10 (from spi_sck_c)
+Route         4   e 0.977                                  req_addr[10]
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i4_4_lut
+Route         2   e 0.798                                  \u_spi_decoder/n10
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i5_3_lut_rep_742
+Route         4   e 0.937                                  n30037
+LUT4        ---     0.408              B to Z              \u_store/i15596_2_lut_3_lut
+Route         2   e 0.798                                  n20086
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i3_4_lut_rep_684
+Route        27   e 1.415                                  n29979
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22107_4_lut_rep_637_4_lut
+Route        11   e 1.139                                  \u_spi_decoder/n29932
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i1_2_lut_rep_572_3_lut_4_lut
+Route         8   e 1.075                                  \u_spi_decoder/n29867
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i14597_4_lut_rep_796
+Route        18   e 1.271                                  \u_spi_decoder/n32964
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i22098_4_lut_3_lut
+Route         4   e 0.937                                  \u_spi_decoder/n27126
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i2_3_lut_4_lut_4_lut_adj_101
+Route         9   e 1.099                                  \u_spi_decoder/n13692
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i1_3_lut_rep_795
+Route         2   e 0.798                                  \u_spi_decoder/n32963
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_145
+Route         3   e 0.879                                  \u_spi_decoder/n24821
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_170_i15_3_lut_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n1953
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_75
+Route         3   e 0.879                                  \u_spi_decoder/n24804
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n26657
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_189_i15_3_lut_rep_493_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n29788
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_76
+Route         3   e 0.879                                  \u_spi_decoder/n2330_adj_5990
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
+Route         4   e 0.937                                  \u_spi_decoder/n2549
+LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_490
+Route         2   e 0.798                                  \u_spi_decoder/n29785
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i6900_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n2773
+LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n2874
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_adj_82
+Route         5   e 0.981                                  \u_spi_decoder/n2944
+LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_4_lut_else_4_lut
+Route         1   e 0.020                                  \u_spi_decoder/n30147
+MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/i23440
+Route         6   e 1.018                                  \u_spi_decoder/resp_crc_15__N_5613[14]
+LUT4        ---     0.408              D to Z              \u_spi_decoder/i6877_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/resp_crc_15__N_5629[11]
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i6862_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5661[3]
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i9_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n17840
+LUT4        ---     0.408              A to Z              \u_spi_decoder/n17840_bdd_4_lut_23295
+Route         1   e 0.020                                  \u_spi_decoder/n29348
+MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23184
+Route         1   e 0.660                                  \u_spi_decoder/n29349
+LUT4        ---     0.408              D to Z              \u_spi_decoder/n29350_bdd_3_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n29351
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22068_3_lut
+Route         1   e 0.020                                  \u_spi_decoder/n2323
+MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1514_i8
+Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_5150[7]
+                  --------
+                   38.181  (32.4% logic, 67.6% route), 32 logic levels.
+
+
+Error:  The following path violates requirements by 35.814ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i10  (from spi_sck_c +)
+   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i7  (to spi_sck_c -)
+
+   Delay:                  38.181ns  (32.4% logic, 67.6% route), 32 logic levels.
+
+ Constraint Details:
+
+     38.181ns data_path \u_spi_decoder/req_addr__i10 to \u_spi_decoder/tx_shift_i7 violates
+      2.500ns delay constraint less
+      0.133ns L_S requirement (totaling 2.367ns) by 35.814ns
+
+ Path Details: \u_spi_decoder/req_addr__i10 to \u_spi_decoder/tx_shift_i7
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i10 (from spi_sck_c)
+Route         4   e 0.977                                  req_addr[10]
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i4_4_lut
+Route         2   e 0.798                                  \u_spi_decoder/n10
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i5_3_lut_rep_742
+Route         4   e 0.937                                  n30037
+LUT4        ---     0.408              B to Z              \u_store/i15596_2_lut_3_lut
+Route         2   e 0.798                                  n20086
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i3_4_lut_rep_684
+Route        27   e 1.415                                  n29979
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22107_4_lut_rep_637_4_lut
+Route        11   e 1.139                                  \u_spi_decoder/n29932
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i1_2_lut_rep_572_3_lut_4_lut
+Route         8   e 1.075                                  \u_spi_decoder/n29867
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i14597_4_lut_rep_796
+Route        18   e 1.271                                  \u_spi_decoder/n32964
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i22098_4_lut_3_lut
+Route         4   e 0.937                                  \u_spi_decoder/n27126
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i2_3_lut_4_lut_4_lut_adj_101
+Route         9   e 1.099                                  \u_spi_decoder/n13692
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i1_3_lut_rep_795
+Route         2   e 0.798                                  \u_spi_decoder/n32963
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_145
+Route         3   e 0.879                                  \u_spi_decoder/n24821
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_170_i15_3_lut_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n1953
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_75
+Route         3   e 0.879                                  \u_spi_decoder/n24804
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n26657
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_189_i15_3_lut_rep_493_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n29788
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_76
+Route         3   e 0.879                                  \u_spi_decoder/n2330_adj_5990
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
+Route         4   e 0.937                                  \u_spi_decoder/n2549
+LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_490
+Route         2   e 0.798                                  \u_spi_decoder/n29785
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i6900_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n2773
+LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n2874
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_adj_82
+Route         5   e 0.981                                  \u_spi_decoder/n2944
+LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_4_lut_then_4_lut
+Route         1   e 0.020                                  \u_spi_decoder/n30148
+MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23440
+Route         6   e 1.018                                  \u_spi_decoder/resp_crc_15__N_5613[14]
+LUT4        ---     0.408              D to Z              \u_spi_decoder/i6877_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/resp_crc_15__N_5629[11]
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i6862_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5661[3]
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i9_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n17840
+LUT4        ---     0.408              A to Z              \u_spi_decoder/n17840_bdd_4_lut_23295
+Route         1   e 0.020                                  \u_spi_decoder/n29348
+MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23184
+Route         1   e 0.660                                  \u_spi_decoder/n29349
+LUT4        ---     0.408              D to Z              \u_spi_decoder/n29350_bdd_3_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n29351
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22068_3_lut
+Route         1   e 0.020                                  \u_spi_decoder/n2323
+MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1514_i8
+Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_5150[7]
+                  --------
+                   38.181  (32.4% logic, 67.6% route), 32 logic levels.
+
+
+Error:  The following path violates requirements by 35.756ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1P3IX    CK             \u_spi_decoder/req_addr__i11  (from spi_sck_c +)
+   Destination:    FD1S3AX    D              \u_spi_decoder/tx_shift_i7  (to spi_sck_c -)
+
+   Delay:                  38.123ns  (32.4% logic, 67.6% route), 32 logic levels.
+
+ Constraint Details:
+
+     38.123ns data_path \u_spi_decoder/req_addr__i11 to \u_spi_decoder/tx_shift_i7 violates
+      2.500ns delay constraint less
+      0.133ns L_S requirement (totaling 2.367ns) by 35.756ns
+
+ Path Details: \u_spi_decoder/req_addr__i11 to \u_spi_decoder/tx_shift_i7
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.367             CK to Q              \u_spi_decoder/req_addr__i11 (from spi_sck_c)
+Route         3   e 0.919                                  req_addr[11]
+LUT4        ---     0.408              D to Z              \u_spi_decoder/i4_4_lut
+Route         2   e 0.798                                  \u_spi_decoder/n10
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i5_3_lut_rep_742
+Route         4   e 0.937                                  n30037
+LUT4        ---     0.408              B to Z              \u_store/i15596_2_lut_3_lut
+Route         2   e 0.798                                  n20086
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i3_4_lut_rep_684
+Route        27   e 1.415                                  n29979
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22107_4_lut_rep_637_4_lut
+Route        11   e 1.139                                  \u_spi_decoder/n29932
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i1_2_lut_rep_572_3_lut_4_lut
+Route         8   e 1.075                                  \u_spi_decoder/n29867
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i14597_4_lut_rep_796
+Route        18   e 1.271                                  \u_spi_decoder/n32964
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i22098_4_lut_3_lut
+Route         4   e 0.937                                  \u_spi_decoder/n27126
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i2_3_lut_4_lut_4_lut_adj_101
+Route         9   e 1.099                                  \u_spi_decoder/n13692
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i1_3_lut_rep_795
+Route         2   e 0.798                                  \u_spi_decoder/n32963
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i2_3_lut_4_lut_adj_145
+Route         3   e 0.879                                  \u_spi_decoder/n24821
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_170_i15_3_lut_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n1953
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_75
+Route         3   e 0.879                                  \u_spi_decoder/n24804
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_187_i15_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n26657
+LUT4        ---     0.408              B to Z              \u_spi_decoder/xor_189_i15_3_lut_rep_493_4_lut_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n29788
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_4_lut_adj_76
+Route         3   e 0.879                                  \u_spi_decoder/n2330_adj_5990
+LUT4        ---     0.408              D to Z              \u_spi_decoder/mux_206_i15_4_lut
+Route         4   e 0.937                                  \u_spi_decoder/n2549
+LUT4        ---     0.408              A to Z              \u_spi_decoder/xor_208_i15_2_lut_rep_490
+Route         2   e 0.798                                  \u_spi_decoder/n29785
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i6900_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n2773
+LUT4        ---     0.408              C to Z              \u_spi_decoder/xor_227_i15_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/n2874
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i2_3_lut_adj_82
+Route         5   e 0.981                                  \u_spi_decoder/n2944
+LUT4        ---     0.408              C to Z              \u_spi_decoder/mux_244_i15_4_lut_else_4_lut
+Route         1   e 0.020                                  \u_spi_decoder/n30147
+MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/i23440
+Route         6   e 1.018                                  \u_spi_decoder/resp_crc_15__N_5613[14]
+LUT4        ---     0.408              D to Z              \u_spi_decoder/i6877_2_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/resp_crc_15__N_5629[11]
+LUT4        ---     0.408              C to Z              \u_spi_decoder/i6862_4_lut
+Route         3   e 0.879                                  \u_spi_decoder/resp_crc_15__N_5661[3]
+LUT4        ---     0.408              B to Z              \u_spi_decoder/i9_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n17840
+LUT4        ---     0.408              A to Z              \u_spi_decoder/n17840_bdd_4_lut_23295
+Route         1   e 0.020                                  \u_spi_decoder/n29348
+MUXL5       ---     0.193           ALUT to Z              \u_spi_decoder/i23184
+Route         1   e 0.660                                  \u_spi_decoder/n29349
+LUT4        ---     0.408              D to Z              \u_spi_decoder/n29350_bdd_3_lut_4_lut
+Route         1   e 0.660                                  \u_spi_decoder/n29351
+LUT4        ---     0.408              A to Z              \u_spi_decoder/i22068_3_lut
+Route         1   e 0.020                                  \u_spi_decoder/n2323
+MUXL5       ---     0.193           BLUT to Z              \u_spi_decoder/mux_1514_i8
+Route         1   e 0.660                                  \u_spi_decoder/tx_shift_7__N_5150[7]
+                  --------
+                   38.123  (32.4% logic, 67.6% route), 32 logic levels.
+
+Warning: 38.314 ns is the maximum delay for this constraint.
 
 
 Timing Report Summary
@@ -569,10 +701,10 @@ Constraint                              |   Constraint|       Actual|Levels
 --------------------------------------------------------------------------------
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk1 [get_nets spi_sck_c]               |     5.000 ns|    83.804 ns|    34 *
+clk1 [get_nets clk_c]                   |     5.000 ns|    21.158 ns|    56 *
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk0 [get_nets clk_c]                   |     5.000 ns|    16.232 ns|    32 *
+clk0 [get_nets spi_sck_c]               |     5.000 ns|    76.628 ns|    32 *
                                         |             |             |
 --------------------------------------------------------------------------------
 
@@ -582,131 +714,205 @@ clk0 [get_nets clk_c]                   |     5.000 ns|    16.232 ns|    32 *
 --------------------------------------------------------------------------------
 Critical Nets                           |   Loads|  Errors| % of total
 --------------------------------------------------------------------------------
-\u_store/action_matches_event           |      68|    3940|     48.10%
+\u_store/n10                            |      49|    4096|     50.00%
                                         |        |        |
-\u_store/n34831                         |       1|    3940|     48.10%
+\u_store/n5217                          |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n40435                   |       7|    3869|     47.23%
+\u_store/n12096                         |      48|    4096|     50.00%
                                         |        |        |
-n38032                                  |       3|    3856|     47.07%
+\u_store/n23165                         |       1|    4096|     50.00%
                                         |        |        |
-\u_store/n34722                         |       1|    3772|     46.04%
+\u_store/n23166                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n34440                   |       3|    3740|     45.65%
+\u_store/n23167                         |       1|    4096|     50.00%
                                         |        |        |
-\u_store/action_head_valid              |      88|    3652|     44.58%
+\u_store/n23168                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n40436                   |      17|    3592|     43.85%
+\u_store/n23169                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n35117                   |       6|    3324|     40.58%
+\u_store/n23170                         |       1|    4096|     50.00%
                                         |        |        |
-n46                                     |      28|    3165|     38.64%
+\u_store/n23171                         |       1|    4096|     50.00%
                                         |        |        |
-n34838                                  |       2|    3132|     38.23%
+\u_store/n23172                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n40434                   |       2|    2891|     35.29%
+\u_store/n23173                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n32759                   |       2|    2883|     35.19%
+\u_store/n23174                         |       1|    4096|     50.00%
                                         |        |        |
-\u_store/n40437                         |      93|    2876|     35.11%
+\u_store/n23175                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n32850                   |       3|    2792|     34.08%
+\u_store/n23176                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/reg_read_valid           |       9|    2727|     33.29%
+\u_store/n23177                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n32638                   |       3|    2701|     32.97%
+\u_store/n23178                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n34769                   |       2|    2682|     32.74%
+\u_store/n23179                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n2260                    |       3|    2591|     31.63%
+\u_store/n23180                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n6_adj_6059              |       1|    2590|     31.62%
+\u_store/n23181                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n37887                   |       9|    2350|     28.69%
+\u_store/n23182                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n32577                   |       3|    2349|     28.67%
+\u_store/n23183                         |       1|    4096|     50.00%
                                         |        |        |
-\u_spi_decoder/n34836                   |       5|    1990|     24.29%
+\u_store/n23184                         |       1|    4096|     50.00%
                                         |        |        |
-\u_store/action_head_event_index[3]     |       1|    1887|     23.03%
+\u_store/n23185                         |       1|    4096|     50.00%
                                         |        |        |
-\u_store/action_head_event_index[1]     |       1|    1885|     23.01%
+\u_store/n23164                         |       1|    4088|     49.90%
                                         |        |        |
-\u_spi_decoder/n37802                   |       3|    1867|     22.79%
+\u_store/n23163                         |       1|    4056|     49.51%
                                         |        |        |
-\u_spi_decoder/n32585                   |       3|    1754|     21.41%
+\u_spi_decoder/n13692                   |       9|    4014|     49.00%
                                         |        |        |
-\u_spi_decoder/n34741                   |       1|    1754|     21.41%
+\u_store/n23162                         |       1|    3976|     48.54%
                                         |        |        |
-\u_spi_decoder/n2874                    |       5|    1657|     20.23%
+\u_store/n29958                         |      61|    3976|     48.54%
                                         |        |        |
-\u_spi_decoder/n32591                   |       3|    1636|     19.97%
+\u_store/n24039                         |       1|    3816|     46.58%
                                         |        |        |
-\u_spi_decoder/n2773                    |       1|    1542|     18.82%
+\u_spi_decoder/n32964                   |      18|    3811|     46.52%
                                         |        |        |
-\u_spi_decoder/n5418                    |       1|    1297|     15.83%
+\u_store/n24038                         |       1|    3804|     46.44%
                                         |        |        |
-req_addr[13]                            |       2|    1295|     15.81%
+\u_store/n24040                         |       1|    3804|     46.44%
                                         |        |        |
-req_addr[14]                            |       2|    1295|     15.81%
+\u_store/n24037                         |       1|    3768|     46.00%
                                         |        |        |
-\u_spi_decoder/n37796                   |       4|    1287|     15.71%
+\u_store/n24041                         |       1|    3768|     46.00%
                                         |        |        |
-\u_store/u_action_queue/n34899          |       1|    1286|     15.70%
+\u_store/n24036                         |       1|    3688|     45.02%
                                         |        |        |
-\u_spi_decoder/n4_adj_6029              |       1|    1237|     15.10%
+\u_store/n24042                         |       1|    3688|     45.02%
                                         |        |        |
-\u_spi_decoder/n3080                    |       2|    1231|     15.03%
+\u_spi_decoder/n27126                   |       4|    3597|     43.91%
                                         |        |        |
-\u_store/u_action_queue/n10_adj_5774    |       1|    1216|     14.84%
+\u_store/n24035                         |       1|    3544|     43.26%
                                         |        |        |
-\u_store/u_action_queue/n4              |       1|    1208|     14.75%
+\u_store/n24043                         |       1|    3544|     43.26%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5427[0]   |       3|    1200|     14.65%
+\u_spi_decoder/n24821                   |       3|    3422|     41.77%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5411[14]  |       5|    1176|     14.36%
+\u_spi_decoder/n32963                   |       2|    3422|     41.77%
                                         |        |        |
-\u_store/u_action_queue/n8_adj_5773     |       1|    1142|     13.94%
+\u_spi_decoder/n1953                    |       3|    3402|     41.53%
                                         |        |        |
-\u_store/u_action_queue/n6              |       1|    1134|     13.84%
+\u_store/n24034                         |       1|    3330|     40.65%
                                         |        |        |
-\u_spi_decoder/n2910                    |       4|    1103|     13.46%
+\u_store/n24044                         |       1|    3328|     40.63%
                                         |        |        |
-\u_store/n34583                         |       1|    1064|     12.99%
+n30037                                  |       4|    3231|     39.44%
                                         |        |        |
-\u_spi_decoder/n32547                   |       3|    1056|     12.89%
+\u_spi_decoder/n24804                   |       3|    3221|     39.32%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5427[4]   |       3|    1050|     12.82%
+\u_spi_decoder/n26657                   |       1|    3119|     38.07%
                                         |        |        |
-\u_spi_decoder/n34737                   |       1|    1047|     12.78%
+\u_spi_decoder/n29788                   |       3|    3119|     38.07%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5130[14]  |       3|    1047|     12.78%
+\u_store/n24033                         |       1|    3052|     37.26%
                                         |        |        |
-\u_spi_decoder/n37786                   |       2|    1042|     12.72%
+\u_store/n24045                         |       1|    3050|     37.23%
                                         |        |        |
-\u_spi_decoder/n37788                   |       5|     973|     11.88%
+\u_spi_decoder/n10                      |       2|    2969|     36.24%
                                         |        |        |
-\u_spi_decoder/n27                      |       3|     953|     11.63%
+n29979                                  |      27|    2923|     35.68%
                                         |        |        |
-\u_store/action_count[3]                |      11|     928|     11.33%
+\u_spi_decoder/n2330_adj_5990           |       3|    2873|     35.07%
                                         |        |        |
-\u_spi_decoder/n16                      |       1|     926|     11.30%
+\u_store/n24032                         |       1|    2714|     33.13%
                                         |        |        |
-\u_spi_decoder/n37655                   |       1|     926|     11.30%
+\u_store/n24046                         |       1|    2712|     33.11%
                                         |        |        |
-\u_spi_decoder/n37656                   |       1|     926|     11.30%
+n20086                                  |       2|    2685|     32.78%
                                         |        |        |
-\u_spi_decoder/n37658                   |       1|     926|     11.30%
+\u_spi_decoder/n29932                   |      11|    2360|     28.81%
                                         |        |        |
-\u_spi_decoder/tx_shift_7__N_4948[7]    |       1|     926|     11.30%
+\u_store/n24031                         |       1|    2316|     28.27%
                                         |        |        |
-\u_store/n31379                         |       1|     920|     11.23%
+\u_store/n24047                         |       1|    2314|     28.25%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5459[2]   |       3|     918|     11.21%
+\u_spi_decoder/n2910                    |       5|    2210|     26.98%
                                         |        |        |
-\u_spi_decoder/n34735                   |       1|     821|     10.02%
+\u_store/n8_adj_6135                    |       1|    2184|     26.66%
                                         |        |        |
-\u_spi_decoder/resp_crc_15__N_5130[15]  |       3|     821|     10.02%
+\u_spi_decoder/n24401                   |       3|    2182|     26.64%
+                                        |        |        |
+\u_spi_decoder/n29867                   |       8|    2077|     25.35%
+                                        |        |        |
+\u_spi_decoder/n2549                    |       4|    2038|     24.88%
+                                        |        |        |
+\u_spi_decoder/n29785                   |       2|    1997|     24.38%
+                                        |        |        |
+\u_spi_decoder/resp_crc_15__N_5613[15]  |       6|    1910|     23.32%
+                                        |        |        |
+\u_store/n24030                         |       1|    1858|     22.68%
+                                        |        |        |
+\u_store/n24048                         |       1|    1856|     22.66%
+                                        |        |        |
+\u_store/n6_adj_6134                    |       1|    1820|     22.22%
+                                        |        |        |
+\u_spi_decoder/n5893                    |       3|    1734|     21.17%
+                                        |        |        |
+n29948                                  |       1|    1698|     20.73%
+                                        |        |        |
+\u_spi_decoder/n24395                   |       3|    1636|     19.97%
+                                        |        |        |
+\u_spi_decoder/resp_crc_15__N_5629[12]  |       1|    1612|     19.68%
+                                        |        |        |
+\u_spi_decoder/n2739                    |       1|    1484|     18.12%
+                                        |        |        |
+\u_spi_decoder/n2873                    |       4|    1484|     18.12%
+                                        |        |        |
+\u_store/n24029                         |       1|    1332|     16.26%
+                                        |        |        |
+\u_store/n24049                         |       1|    1330|     16.24%
+                                        |        |        |
+\u_spi_decoder/n2874                    |       3|    1282|     15.65%
+                                        |        |        |
+\u_spi_decoder/n2773                    |       1|    1241|     15.15%
+                                        |        |        |
+\u_spi_decoder/n2944                    |       5|    1173|     14.32%
+                                        |        |        |
+\u_spi_decoder/resp_crc_15__N_5661[3]   |       3|    1142|     13.94%
+                                        |        |        |
+\u_spi_decoder/n2323                    |       1|    1070|     13.06%
+                                        |        |        |
+\u_spi_decoder/n29348                   |       1|    1070|     13.06%
+                                        |        |        |
+\u_spi_decoder/n29349                   |       1|    1070|     13.06%
+                                        |        |        |
+\u_spi_decoder/n29351                   |       1|    1070|     13.06%
+                                        |        |        |
+\u_spi_decoder/tx_shift_7__N_5150[7]    |       1|    1070|     13.06%
+                                        |        |        |
+\u_spi_decoder/n30165                   |       1|     955|     11.66%
+                                        |        |        |
+\u_spi_decoder/n30166                   |       1|     955|     11.66%
+                                        |        |        |
+\u_spi_decoder/resp_crc_15__N_5613[14]  |       6|     934|     11.40%
+                                        |        |        |
+\u_spi_decoder/n17840                   |       1|     931|     11.36%
+                                        |        |        |
+\u_store/event_count[3]                 |      16|     912|     11.13%
+                                        |        |        |
+\u_spi_decoder/n2268                    |       1|     875|     10.68%
+                                        |        |        |
+\u_spi_decoder/n2326                    |       1|     875|     10.68%
+                                        |        |        |
+\u_spi_decoder/n29303                   |       1|     875|     10.68%
+                                        |        |        |
+\u_spi_decoder/tx_shift_7__N_5150[4]    |       1|     875|     10.68%
+                                        |        |        |
+\u_spi_decoder/n2267                    |       1|     870|     10.62%
+                                        |        |        |
+\u_spi_decoder/n2325                    |       1|     870|     10.62%
+                                        |        |        |
+\u_spi_decoder/n29326                   |       1|     870|     10.62%
+                                        |        |        |
+\u_spi_decoder/tx_shift_7__N_5150[5]    |       1|     870|     10.62%
                                         |        |        |
 --------------------------------------------------------------------------------
 
@@ -714,10 +920,10 @@ req_addr[14]                            |       2|    1295|     15.81%
 Timing summary:
 ---------------
 
-Timing errors: 8192  Score: 330728668
+Timing errors: 8192  Score: 330182272
 
-Constraints cover  20903135 paths, 10075 nets, and 33514 connections (92.4% coverage)
+Constraints cover  25143245 paths, 10366 nets, and 36025 connections (92.2% coverage)
 
 
-Peak memory: 190169088 bytes, TRCE: 36327424 bytes, DLYMAN: 2949120 bytes
+Peak memory: 204210176 bytes, TRCE: 42369024 bytes, DLYMAN: 3112960 bytes
 CPU_TIME_REPORT: 0 secs 

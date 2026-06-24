@@ -24,8 +24,7 @@ from fpga_mock_schedule import (
     build_upload_event,
     discover_fpga_card_slot,
     expect_ack,
-    gpio_force_high_action,
-    gpio_force_low_action,
+    gpio_pulse_action,
     gpio_stop_action,
     gpio_waveform_action,
     send_and_collect,
@@ -65,12 +64,12 @@ def run_scope_test(port_name: str) -> int:
         time.sleep(INTER_COMMAND_DELAY_S)
 
         print("Uploading GPIO scope schedule:")
-        seq = upload_event(port, reader, seq, 1, 500_000, [gpio_force_high_action(0)], "TP0/CH0 high")
-        seq = upload_event(port, reader, seq, 2, 1_000_000, [gpio_force_high_action(1)], "TP1/CH1 high")
-        seq = upload_event(port, reader, seq, 3, 1_500_000, [gpio_force_high_action(2)], "TP2/CH2 high")
-        seq = upload_event(port, reader, seq, 4, 2_000_000, [gpio_force_low_action(0)], "TP0/CH0 low")
-        seq = upload_event(port, reader, seq, 5, 2_500_000, [gpio_force_low_action(1)], "TP1/CH1 low")
-        seq = upload_event(port, reader, seq, 6, 3_000_000, [gpio_force_low_action(2)], "TP2/CH2 low")
+        seq = upload_event(port, reader, seq, 1, 500_000, [gpio_pulse_action(0)], "TP0/CH0 pulse")
+        seq = upload_event(port, reader, seq, 2, 1_000_000, [gpio_pulse_action(1)], "TP1/CH1 pulse")
+        seq = upload_event(port, reader, seq, 3, 1_500_000, [gpio_pulse_action(2)], "TP2/CH2 pulse")
+        seq = upload_event(port, reader, seq, 4, 2_000_000, [gpio_stop_action(0)], "TP0/CH0 stop")
+        seq = upload_event(port, reader, seq, 5, 2_500_000, [gpio_stop_action(1)], "TP1/CH1 stop")
+        seq = upload_event(port, reader, seq, 6, 3_000_000, [gpio_stop_action(2)], "TP2/CH2 stop")
         seq = upload_event(
             port,
             reader,

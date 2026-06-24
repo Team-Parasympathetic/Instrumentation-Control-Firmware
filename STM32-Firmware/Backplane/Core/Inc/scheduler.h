@@ -29,9 +29,9 @@ extern "C" {
 #define PUMP_SET_STATE                0x01U
 
 #define GPIO_SET_WAVEFORM             0x01U
-#define GPIO_FORCE_LOW                0x02U
-#define GPIO_FORCE_HIGH               0x03U
-#define GPIO_STOP                     0x04U
+#define GPIO_PULSE                    0x02U
+#define GPIO_STOP                     0x03U
+#define GPIO_MIRROR_SYNC              0x04U
 
 typedef enum
 {
@@ -64,7 +64,7 @@ typedef struct
   uint8_t last_error;
   uint16_t event_count;
   uint32_t last_event_id;
-  uint64_t current_time_us_placeholder;
+  uint64_t current_time_us;
 } SchedulerStatus;
 
 void scheduler_init(void);

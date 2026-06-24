@@ -44,6 +44,31 @@ static void fpga_bus_set_error(uint8_t status, uint8_t detail)
   g_fpga_bus.last_detail = detail;
 }
 
+static uint32_t fpga_bus_checksum_word(uint32_t checksum, uint32_t value)
+{
+  return ((checksum << 1) | (checksum >> 31)) ^ value;
+}
+
+static uint32_t fpga_bus_checksum_event(uint32_t checksum, uint64_t timestamp_us)
+{
+  checksum = fpga_bus_checksum_word(checksum, (uint32_t)(timestamp_us & 0xFFFFFFFFULL));
+  checksum = fpga_bus_checksum_word(checksum, (uint32_t)((timestamp_us >> 32) & 0xFFFFFFFFULL));
+  return checksum;
+}
+
+static uint32_t fpga_bus_checksum_action(uint32_t checksum,
+                                         uint32_t event_index,
+                                         uint32_t meta,
+                                         uint32_t phase_step,
+                                         uint32_t duty_threshold)
+{
+  checksum = fpga_bus_checksum_word(checksum, event_index);
+  checksum = fpga_bus_checksum_word(checksum, meta);
+  checksum = fpga_bus_checksum_word(checksum, phase_step);
+  checksum = fpga_bus_checksum_word(checksum, duty_threshold);
+  return checksum;
+}
+
 static bool fpga_bus_ensure_slot(void)
 {
   uint8_t pass;
@@ -148,16 +173,7 @@ static bool fpga_bus_build_gpio_registers(uint8_t channel_id,
       }
       break;
 
-    case GPIO_FORCE_LOW:
-      if (payload_len != 0U)
-      {
-        fpga_bus_set_error(STATUS_BAD_LEN, channel_id);
-        return false;
-      }
-      control = FPGA_CHANNEL_MODE_FORCE_LOW;
-      break;
-
-    case GPIO_FORCE_HIGH:
+    case GPIO_PULSE:
       if (payload_len != 0U)
       {
         fpga_bus_set_error(STATUS_BAD_LEN, channel_id);
@@ -173,6 +189,15 @@ static bool fpga_bus_build_gpio_registers(uint8_t channel_id,
         return false;
       }
       control = FPGA_CHANNEL_MODE_STOP;
+      break;
+
+    case GPIO_MIRROR_SYNC:
+      if (payload_len != 0U)
+      {
+        fpga_bus_set_error(STATUS_BAD_LEN, channel_id);
+        return false;
+      }
+      control = FPGA_CHANNEL_MODE_MIRROR_SYNC;
       break;
 
     default:
@@ -341,9 +366,88 @@ static bool fpga_bus_write_action_entry(uint16_t event_index,
   return true;
 }
 
+static bool fpga_bus_verify_remote_schedule(uint16_t expected_event_count,
+                                            uint16_t expected_action_count,
+                                            uint64_t expected_last_event_time,
+                                            uint32_t expected_last_action_event,
+                                            uint32_t expected_event_checksum,
+                                            uint32_t expected_action_checksum)
+{
+  uint32_t actual_event_count;
+  uint32_t actual_action_count;
+  uint32_t actual_last_event_lo;
+  uint32_t actual_last_event_hi;
+  uint32_t actual_last_action_event;
+  uint32_t actual_event_checksum;
+  uint32_t actual_action_checksum;
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_EVENT_REG_COUNT, &actual_event_count))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 0U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_ACTION_REG_COUNT, &actual_action_count))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 1U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_EVENT_REG_LAST_TIME_LO, &actual_last_event_lo))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 2U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_EVENT_REG_LAST_TIME_HI, &actual_last_event_hi))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 3U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot,
+                         FPGA_ACTION_REG_LAST_EVENT_INDEX,
+                         &actual_last_action_event))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 4U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_EVENT_REG_CHECKSUM, &actual_event_checksum))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 5U);
+    return false;
+  }
+
+  if (!card_bus_read_reg(g_fpga_bus.active_slot, FPGA_ACTION_REG_CHECKSUM, &actual_action_checksum))
+  {
+    fpga_bus_set_error(card_bus_get_last_status(), 6U);
+    return false;
+  }
+
+  if ((actual_event_count != expected_event_count) ||
+      (actual_action_count != expected_action_count) ||
+      (actual_last_event_lo != (uint32_t)(expected_last_event_time & 0xFFFFFFFFULL)) ||
+      (actual_last_event_hi != (uint32_t)((expected_last_event_time >> 32) & 0xFFFFFFFFULL)) ||
+      ((expected_action_count != 0U) && (actual_last_action_event != expected_last_action_event)) ||
+      (actual_event_checksum != expected_event_checksum) ||
+      (actual_action_checksum != expected_action_checksum))
+  {
+    fpga_bus_set_error(STATUS_HW_ERROR, 0U);
+    return false;
+  }
+
+  fpga_bus_set_error(STATUS_OK, 0U);
+  return true;
+}
+
 static bool fpga_bus_upload_schedule(const Schedule *schedule)
 {
   uint16_t event_index;
+  uint16_t uploaded_action_count = 0U;
+  uint32_t expected_event_checksum = 0U;
+  uint32_t expected_action_checksum = 0U;
+  uint32_t expected_last_action_event = 0U;
 
   if (schedule == 0)
   {
@@ -362,6 +466,10 @@ static bool fpga_bus_upload_schedule(const Schedule *schedule)
     {
       return false;
     }
+
+    expected_event_checksum =
+      fpga_bus_checksum_event(expected_event_checksum,
+                              schedule->events[event_index].timestamp_us);
   }
 
   for (event_index = 0U; event_index < schedule->event_count; event_index++)
@@ -384,6 +492,8 @@ static bool fpga_bus_upload_schedule(const Schedule *schedule)
 
       if (action.module_type == MODULE_GPIO_FPGA)
       {
+        uint32_t meta;
+
         if (!fpga_bus_build_gpio_registers(action.module_id,
                                            action.action_type,
                                            action.payload,
@@ -403,13 +513,35 @@ static bool fpga_bus_upload_schedule(const Schedule *schedule)
         {
           return false;
         }
+
+        meta = FPGA_ACTION_META(action.module_id, control);
+        expected_action_checksum =
+          fpga_bus_checksum_action(expected_action_checksum,
+                                   (uint32_t)event_index,
+                                   meta,
+                                   phase_step,
+                                   duty_threshold);
+        expected_last_action_event = (uint32_t)event_index;
+        uploaded_action_count++;
       }
 
       offset = (uint16_t)(offset + ACTION_HEADER_SIZE + action.action_len);
     }
   }
 
+  if (!fpga_bus_verify_remote_schedule(
+        schedule->event_count,
+        uploaded_action_count,
+        schedule->events[schedule->event_count - 1U].timestamp_us,
+        expected_last_action_event,
+        expected_event_checksum,
+        expected_action_checksum))
+  {
+    return false;
+  }
+
   g_fpga_bus.queued_event_count = schedule->event_count;
+  g_fpga_bus.queued_action_count = uploaded_action_count;
   fpga_bus_set_error(STATUS_OK, 0U);
   return true;
 }

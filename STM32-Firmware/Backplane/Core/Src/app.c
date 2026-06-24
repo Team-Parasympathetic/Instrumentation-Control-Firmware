@@ -11,8 +11,10 @@
 #include <string.h>
 
 #define STATUS_PAYLOAD_SIZE  16U
+#define PREPARE_STATUS_PAYLOAD_SIZE  8U
 #define CARD_INVENTORY_ENTRY_SIZE    7U
 #define CARD_INVENTORY_PAYLOAD_SIZE  (1U + (CARD_BUS_SLOT_COUNT * CARD_INVENTORY_ENTRY_SIZE))
+#define APP_POST_PRELOAD_START_DELAY_MS 1000U
 
 typedef enum
 {
@@ -42,15 +44,40 @@ typedef struct
   uint8_t pending_tx_valid;
   uint16_t pending_tx_len;
   uint8_t pending_tx_frame[PROTOCOL_MAX_FRAME_SIZE];
+  uint8_t start_pending;
+  uint32_t start_ready_ms;
+  uint8_t schedule_prepared;
+  uint32_t prepare_ready_ms;
   /* One deferred event is enough because the host uses a request/response flow. */
   AppEvent deferred_event;
 } AppContext;
 
 static AppContext g_app;
 
-static uint64_t app_get_time_us_placeholder(void)
+static uint64_t app_get_time_us(void)
 {
   return (uint64_t)HAL_GetTick() * 1000ULL;
+}
+
+static uint8_t app_prepared_schedule_ready(void)
+{
+  return ((g_app.schedule_prepared != 0U) &&
+          ((int32_t)(HAL_GetTick() - g_app.prepare_ready_ms) >= 0)) ? 1U : 0U;
+}
+
+static uint32_t app_prepare_remaining_ms(void)
+{
+  if (app_prepared_schedule_ready() != 0U)
+  {
+    return 0U;
+  }
+
+  if (g_app.schedule_prepared == 0U)
+  {
+    return 0U;
+  }
+
+  return (uint32_t)(g_app.prepare_ready_ms - HAL_GetTick());
 }
 
 static void app_handle_scheduler_runtime(void)
@@ -68,57 +95,33 @@ static void app_handle_scheduler_runtime(void)
   }
 }
 
-static uint8_t app_start_schedule(uint8_t *detail_out)
+static void app_cancel_pending_start(void)
+{
+  g_app.start_pending = 0U;
+  g_app.start_ready_ms = 0U;
+}
+
+static void app_reset_prepare_state(void)
+{
+  app_cancel_pending_start();
+  g_app.schedule_prepared = 0U;
+  g_app.prepare_ready_ms = 0U;
+}
+
+static void app_clear_prepared_outputs(void)
+{
+  app_reset_prepare_state();
+  pump_bus_stop_all();
+  fpga_bus_stop_all();
+}
+
+static uint8_t app_arm_prepared_schedule(uint8_t *detail_out)
 {
   uint8_t error_code;
 
   if (detail_out != 0)
   {
     *detail_out = 0U;
-  }
-
-  if (scheduler_get_state() == SCHED_RUNNING)
-  {
-    return ERR_BUSY_RUNNING;
-  }
-
-  if (!pump_bus_validate_schedule(scheduler_get_schedule()))
-  {
-    if (detail_out != 0)
-    {
-      *detail_out = pump_bus_get_last_detail();
-    }
-    return ERR_BAD_MODULE;
-  }
-
-  if (!fpga_bus_validate_schedule(scheduler_get_schedule()))
-  {
-    if (detail_out != 0)
-    {
-      *detail_out = fpga_bus_get_last_detail();
-    }
-    return ERR_BAD_MODULE;
-  }
-
-  if (!pump_bus_start_schedule(scheduler_get_schedule()))
-  {
-    if (detail_out != 0)
-    {
-      *detail_out = pump_bus_get_last_detail();
-    }
-    pump_bus_stop_all();
-    return ERR_BAD_MODULE;
-  }
-
-  if (!fpga_bus_start_schedule(scheduler_get_schedule()))
-  {
-    if (detail_out != 0)
-    {
-      *detail_out = fpga_bus_get_last_detail();
-    }
-    pump_bus_stop_all();
-    fpga_bus_stop_all();
-    return ERR_BAD_MODULE;
   }
 
   error_code = scheduler_start(detail_out);
@@ -156,6 +159,146 @@ static uint8_t app_start_schedule(uint8_t *detail_out)
   }
 
   return error_code;
+}
+
+static uint8_t app_prepare_schedule(uint8_t *detail_out)
+{
+  const Schedule *schedule = scheduler_get_schedule();
+
+  if (detail_out != 0)
+  {
+    *detail_out = 0U;
+  }
+
+  if ((scheduler_get_state() == SCHED_RUNNING) || (g_app.start_pending != 0U))
+  {
+    return ERR_BUSY_RUNNING;
+  }
+
+  if ((schedule == 0) || (schedule->event_count == 0U))
+  {
+    return ERR_BAD_EVENT;
+  }
+
+  if (g_app.schedule_prepared != 0U)
+  {
+    return ACK_OK;
+  }
+
+  if (!pump_bus_validate_schedule(schedule))
+  {
+    if (detail_out != 0)
+    {
+      *detail_out = pump_bus_get_last_detail();
+    }
+    return ERR_BAD_MODULE;
+  }
+
+  if (!fpga_bus_validate_schedule(schedule))
+  {
+    if (detail_out != 0)
+    {
+      *detail_out = fpga_bus_get_last_detail();
+    }
+    return ERR_BAD_MODULE;
+  }
+
+  if (!pump_bus_start_schedule(schedule))
+  {
+    if (detail_out != 0)
+    {
+      *detail_out = pump_bus_get_last_detail();
+    }
+    pump_bus_stop_all();
+    return ERR_BAD_MODULE;
+  }
+
+  if (!fpga_bus_start_schedule(schedule))
+  {
+    if (detail_out != 0)
+    {
+      *detail_out = fpga_bus_get_last_detail();
+    }
+    pump_bus_stop_all();
+    fpga_bus_stop_all();
+    return ERR_BAD_MODULE;
+  }
+
+  if (!pump_bus_preload_initial_dacs())
+  {
+    if (detail_out != 0)
+    {
+      *detail_out = pump_bus_get_last_detail();
+    }
+    pump_bus_stop_all();
+    fpga_bus_stop_all();
+    return ERR_BAD_MODULE;
+  }
+
+  g_app.schedule_prepared = 1U;
+  g_app.prepare_ready_ms = HAL_GetTick() + APP_POST_PRELOAD_START_DELAY_MS;
+  return ACK_OK;
+}
+
+static uint8_t app_start_schedule(uint8_t *detail_out)
+{
+  uint8_t error_code;
+
+  if (detail_out != 0)
+  {
+    *detail_out = 0U;
+  }
+
+  if ((scheduler_get_state() == SCHED_RUNNING) || (g_app.start_pending != 0U))
+  {
+    return ERR_BUSY_RUNNING;
+  }
+
+  if (g_app.schedule_prepared == 0U)
+  {
+    error_code = app_prepare_schedule(detail_out);
+    if (error_code != ACK_OK)
+    {
+      return error_code;
+    }
+
+    g_app.start_pending = 1U;
+    g_app.start_ready_ms = g_app.prepare_ready_ms;
+    return ACK_OK;
+  }
+
+  if (app_prepared_schedule_ready() == 0U)
+  {
+    return ERR_BUSY_RUNNING;
+  }
+
+  error_code = app_arm_prepared_schedule(detail_out);
+  app_reset_prepare_state();
+  return error_code;
+}
+
+static void app_handle_pending_start(void)
+{
+  uint8_t error_code;
+  uint8_t detail = 0U;
+
+  if (g_app.start_pending == 0U)
+  {
+    return;
+  }
+
+  if ((int32_t)(HAL_GetTick() - g_app.start_ready_ms) < 0)
+  {
+    return;
+  }
+
+  app_cancel_pending_start();
+  error_code = app_arm_prepared_schedule(&detail);
+  app_reset_prepare_state();
+  if (error_code != ACK_OK)
+  {
+    scheduler_set_error(error_code);
+  }
 }
 
 static uint8_t app_try_tx(const uint8_t *data, uint16_t len)
@@ -203,15 +346,33 @@ static void app_send_status(uint16_t seq)
   SchedulerStatus status;
   uint8_t payload[STATUS_PAYLOAD_SIZE];
 
-  scheduler_get_status(&status, app_get_time_us_placeholder());
+  scheduler_get_status(&status, app_get_time_us());
 
   payload[0] = status.scheduler_state;
   payload[1] = status.last_error;
   write_u16_le(&payload[2], status.event_count);
   write_u32_le(&payload[4], status.last_event_id);
-  write_u64_le(&payload[8], status.current_time_us_placeholder);
+  write_u64_le(&payload[8], status.current_time_us);
 
   (void)protocol_send_frame(app_protocol_tx, 0, MSG_GET_STATUS, seq, payload, sizeof(payload));
+}
+
+static void app_send_prepare_status(uint16_t seq)
+{
+  uint8_t payload[PREPARE_STATUS_PAYLOAD_SIZE];
+
+  memset(payload, 0, sizeof(payload));
+  payload[0] = g_app.schedule_prepared;
+  payload[1] = app_prepared_schedule_ready();
+  payload[2] = g_app.start_pending;
+  write_u32_le(&payload[4], app_prepare_remaining_ms());
+
+  (void)protocol_send_frame(app_protocol_tx,
+                            0,
+                            MSG_GET_PREPARE_STATUS,
+                            seq,
+                            payload,
+                            sizeof(payload));
 }
 
 static void app_send_card_inventory(uint16_t seq)
@@ -316,10 +477,29 @@ static void app_handle_packet(const ProtocolPacket *packet)
 
     case MSG_CLEAR_SCHEDULE:
       error_code = scheduler_clear(&detail);
+      if (error_code == ACK_OK)
+      {
+        app_clear_prepared_outputs();
+      }
       break;
 
     case MSG_UPLOAD_EVENT:
-      error_code = scheduler_upload_event(packet->payload, packet->payload_len, &detail);
+      if (g_app.start_pending != 0U)
+      {
+        error_code = ERR_BUSY_RUNNING;
+      }
+      else
+      {
+        if (g_app.schedule_prepared != 0U)
+        {
+          app_clear_prepared_outputs();
+        }
+        error_code = scheduler_upload_event(packet->payload, packet->payload_len, &detail);
+      }
+      break;
+
+    case MSG_PREPARE_SCHEDULE:
+      error_code = app_prepare_schedule(&detail);
       break;
 
     case MSG_START_SCHEDULE:
@@ -327,12 +507,16 @@ static void app_handle_packet(const ProtocolPacket *packet)
       break;
 
     case MSG_STOP_SCHEDULE:
+      app_reset_prepare_state();
       pump_bus_stop_all();
       fpga_bus_stop_all();
       scheduler_stop();
       break;
 
     case MSG_GET_STATUS:
+      break;
+
+    case MSG_GET_PREPARE_STATUS:
       break;
 
     case MSG_GET_CARD_INVENTORY:
@@ -360,6 +544,10 @@ static void app_handle_packet(const ProtocolPacket *packet)
   if (packet->msg_type == MSG_GET_STATUS)
   {
     app_send_status(packet->seq);
+  }
+  else if (packet->msg_type == MSG_GET_PREPARE_STATUS)
+  {
+    app_send_prepare_status(packet->seq);
   }
   else if (packet->msg_type == MSG_GET_CARD_INVENTORY)
   {
@@ -416,6 +604,7 @@ void app_poll(void)
   }
 
   app_process_events();
+  app_handle_pending_start();
   app_handle_scheduler_runtime();
 }
 

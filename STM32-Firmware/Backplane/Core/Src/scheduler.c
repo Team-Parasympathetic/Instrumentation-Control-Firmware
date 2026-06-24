@@ -101,9 +101,9 @@ static uint8_t scheduler_validate_gpio_action(uint8_t module_id,
       }
       break;
 
-    case GPIO_FORCE_LOW:
-    case GPIO_FORCE_HIGH:
+    case GPIO_PULSE:
     case GPIO_STOP:
+    case GPIO_MIRROR_SYNC:
       if (payload_len != 0U)
       {
         if (detail != 0)
@@ -367,7 +367,7 @@ void scheduler_get_status(SchedulerStatus *status, uint64_t current_time_us)
   status->last_error = g_scheduler.last_error;
   status->event_count = g_scheduler.schedule.event_count;
   status->last_event_id = g_scheduler.last_event_id;
-  status->current_time_us_placeholder = current_time_us;
+  status->current_time_us = current_time_us;
 }
 
 void scheduler_record_error(uint8_t error_code)

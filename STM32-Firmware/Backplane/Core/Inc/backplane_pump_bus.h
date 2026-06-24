@@ -13,6 +13,7 @@ extern "C" {
 void pump_bus_init(void);
 bool pump_bus_validate_schedule(const Schedule *schedule);
 bool pump_bus_start_schedule(const Schedule *schedule);
+bool pump_bus_preload_initial_dacs(void);
 bool pump_bus_arm_schedule(void);
 void pump_bus_stop_all(void);
 

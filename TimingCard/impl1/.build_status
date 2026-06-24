@@ -6,22 +6,22 @@
             <Task name="TimingSimFileVlg" build_result="0" update_result="3" update_time="0"/>
             <Task name="TimingSimFileVHD" build_result="0" update_result="3" update_time="0"/>
             <Task name="Bitgen" build_result="0" update_result="3" update_time="0"/>
-            <Task name="Jedecgen" build_result="2" update_result="0" update_time="1777873809"/>
+            <Task name="Jedecgen" build_result="2" update_result="0" update_time="1782149133"/>
         </Milestone>
-        <Milestone name="Map" build_result="2" build_time="1777873756">
-            <Task name="Map" build_result="2" update_result="0" update_time="1777873756"/>
+        <Milestone name="Map" build_result="2" build_time="1782148949">
+            <Task name="Map" build_result="2" update_result="0" update_time="1782148949"/>
             <Task name="MapTrace" build_result="0" update_result="3" update_time="0"/>
             <Task name="MapVerilogSimFile" build_result="0" update_result="3" update_time="0"/>
             <Task name="MapVHDLSimFile" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Milestone name="PAR" build_result="2" build_time="1777873802">
-            <Task name="PAR" build_result="2" update_result="0" update_time="1777873802"/>
-            <Task name="PARTrace" build_result="2" update_result="0" update_time="1777873803"/>
+        <Milestone name="PAR" build_result="2" build_time="1782149100">
+            <Task name="PAR" build_result="2" update_result="0" update_time="1782149100"/>
+            <Task name="PARTrace" build_result="2" update_result="0" update_time="1782149101"/>
             <Task name="IOTiming" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Milestone name="Synthesis" build_result="2" build_time="1777873481">
-            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1777873481"/>
-            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1777873481"/>
+        <Milestone name="Synthesis" build_result="2" build_time="1782148938">
+            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1782148938"/>
+            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1782148938"/>
         </Milestone>
         <Milestone name="TOOL_Report" build_result="0" build_time="0">
             <Task name="HDLE" build_result="0" update_result="3" update_time="0"/>
@@ -30,14 +30,15 @@
             <Task name="PIODRC" build_result="0" update_result="3" update_time="0"/>
             <Task name="DEC" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Report name=".vdbs/TimingCard_impl1_map.vdb" last_build_time="1777873756" last_build_size="2696814"/>
-        <Report name="TimingCard_impl1.bgn" last_build_time="1777873809" last_build_size="4591"/>
-        <Report name="TimingCard_impl1.jed" last_build_time="1777873809" last_build_size="1466124"/>
-        <Report name="TimingCard_impl1.lsedata" last_build_time="1777873473" last_build_size="11462426"/>
-        <Report name="TimingCard_impl1.ncd" last_build_time="1777873802" last_build_size="7504412"/>
-        <Report name="TimingCard_impl1.ngd" last_build_time="1777873481" last_build_size="6007827"/>
+        <Report name=".vdbs/TimingCard_impl1_map.vdb" last_build_time="1782148949" last_build_size="2827598"/>
+        <Report name="TimingCard_impl1.bgn" last_build_time="1782149133" last_build_size="4601"/>
+        <Report name="TimingCard_impl1.jed" last_build_time="1782149133" last_build_size="1466124"/>
+        <Report name="TimingCard_impl1.lsedata" last_build_time="1782148923" last_build_size="11599761"/>
+        <Report name="TimingCard_impl1.ncd" last_build_time="1782149100" last_build_size="7962510"/>
+        <Report name="TimingCard_impl1.ngd" last_build_time="1782148938" last_build_size="6298568"/>
         <Report name="TimingCard_impl1.tw1" last_build_time="1777353289" last_build_size="10011"/>
-        <Report name="TimingCard_impl1.twr" last_build_time="1777873803" last_build_size="138628"/>
-        <Report name="TimingCard_impl1_map.ncd" last_build_time="1777873756" last_build_size="5032605"/>
+        <Report name="TimingCard_impl1.twr" last_build_time="1782149101" last_build_size="131478"/>
+        <Report name="TimingCard_impl1_map.ncd" last_build_time="1782148948" last_build_size="5258447"/>
     </Strategy>
 </BuildStatus>
+                         

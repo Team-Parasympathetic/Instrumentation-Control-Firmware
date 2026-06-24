@@ -26,8 +26,8 @@ from fpga_mock_schedule import (
     build_upload_event,
     expect_ack,
     get_card_inventory,
-    gpio_force_high_action,
-    gpio_force_low_action,
+    gpio_pulse_action,
+    gpio_stop_action,
     print_card_inventory,
     send_and_collect,
 )
@@ -110,8 +110,8 @@ def run_sync_test(port_name: str, local_pump: int) -> int:
             seq,
             1,
             500_000,
-            [gpio_force_high_action(0), pump_set_state_action(pump_module_id, True, False, 200_000)],
-            "TP0 high; pump enable forward at about 1.0 V DAC",
+            [gpio_pulse_action(0), pump_set_state_action(pump_module_id, True, False, 200_000)],
+            "TP0 pulse; pump enable forward at about 1.0 V DAC",
         )
         seq = upload_event(
             port,
@@ -119,8 +119,8 @@ def run_sync_test(port_name: str, local_pump: int) -> int:
             seq,
             2,
             1_500_000,
-            [gpio_force_high_action(1), pump_set_state_action(pump_module_id, True, True, 600_000)],
-            "TP1 high; pump stays enabled, direction flips, about 3.0 V DAC",
+            [gpio_pulse_action(1), pump_set_state_action(pump_module_id, True, True, 600_000)],
+            "TP1 pulse; pump stays enabled, direction flips, about 3.0 V DAC",
         )
         seq = upload_event(
             port,
@@ -128,8 +128,8 @@ def run_sync_test(port_name: str, local_pump: int) -> int:
             seq,
             3,
             2_500_000,
-            [gpio_force_low_action(0), pump_set_state_action(pump_module_id, False, True, 0)],
-            "TP0 low; pump disables, DAC returns to 0 V",
+            [gpio_stop_action(0), pump_set_state_action(pump_module_id, False, True, 0)],
+            "TP0 stop; pump disables, DAC returns to 0 V",
         )
         seq = upload_event(
             port,
@@ -137,8 +137,8 @@ def run_sync_test(port_name: str, local_pump: int) -> int:
             seq,
             4,
             3_500_000,
-            [gpio_force_low_action(1)],
-            "TP1 low; no pump action, verifies no extra pump step is required",
+            [gpio_stop_action(1)],
+            "TP1 stop; no pump action, verifies no extra pump step is required",
         )
 
         expect_ack(send_and_collect(port, reader, MSG_GET_STATUS, seq, expected_frames=2), "status before start")
