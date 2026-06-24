@@ -1,25 +1,25 @@
 ----------------------------------------------------------------------
 Report for cell top.TECH
-Register bits:  5421 of 7209 (75.198%)
+Register bits:  5551 of 7209 (77.001%)
 I/O cells:      51
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D       956          100.0
-                            FD1P3AX      3518          100.0
+                            FD1P3AX      2014          100.0
                             FD1P3AY        81          100.0
-                            FD1P3IX      1555          100.0
+                            FD1P3IX      3188          100.0
                             FD1P3JX         1          100.0
-                            FD1S3AX       259          100.0
+                            FD1S3AX       260          100.0
                             FD1S3IX         7          100.0
                                 GSR         1          100.0
                                  IB         4          100.0
                                 INV         1          100.0
-                            L6MUX21        19          100.0
-                               LUT4      3555          100.0
-                              MUX21         2          100.0
+                            L6MUX21        39          100.0
+                               LUT4      3743          100.0
+                              MUX21         4          100.0
                                  OB        47          100.0
                             PDPW8KC         7          100.0
-                              PFUMX       196          100.0
+                              PFUMX       195          100.0
 SUB MODULES
             timingcard_action_queue         1
              timingcard_event_queue         1
@@ -59,39 +59,22 @@ SUB MODULES
           timingcard_schedule_store         1
              timingcard_spi_decoder         1
            timingcard_spi_write_cdc         1
-                              TOTAL     10247
-----------------------------------------------------------------------
-Report for cell timingcard_spi_decoder.v1
-Instance Path : u_spi_decoder
-                                  Cell usage:
-                               cell     count   Res Usage(%)
-                              CCU2D        27            2.8
-                            FD1P3AX       154            4.4
-                            FD1P3AY        16           19.8
-                            FD1P3IX        55            3.5
-                            FD1P3JX         1          100.0
-                            FD1S3AX         9            3.5
-                            FD1S3IX         5           71.4
-                            L6MUX21         3           15.8
-                               LUT4       674           19.0
-                              MUX21         2          100.0
-                              PFUMX        71           36.2
-                              TOTAL      1017
+                              TOTAL     10586
 ----------------------------------------------------------------------
 Report for cell timingcard_schedule_store.v1
 Instance Path : u_store
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D       929           97.2
-                            FD1P3AX      3316           94.3
+                            FD1P3AX      1812           90.0
                             FD1P3AY        65           80.2
-                            FD1P3IX      1500           96.5
-                            FD1S3AX       249           96.1
+                            FD1P3IX      3134           98.3
+                            FD1S3AX       250           96.2
                             FD1S3IX         2           28.6
-                            L6MUX21        14           73.7
-                               LUT4      2786           78.4
+                            L6MUX21        38           97.4
+                               LUT4      3053           81.6
                             PDPW8KC         7          100.0
-                              PFUMX       116           59.2
+                              PFUMX       119           61.0
 SUB MODULES
             timingcard_action_queue         1
              timingcard_event_queue         1
@@ -129,14 +112,14 @@ SUB MODULES
           timingcard_pwm_channel_U8         1
           timingcard_pwm_channel_U9         1
            timingcard_spi_write_cdc         1
-                              TOTAL      9020
+                              TOTAL      9445
 ----------------------------------------------------------------------
 Report for cell timingcard_spi_write_cdc.v1
 Instance Path : u_store.u_write_cdc
                                   Cell usage:
                                cell     count   Res Usage(%)
-                            FD1P3AX        49            1.4
-                            FD1S3AX        99           38.2
+                            FD1P3AX        49            2.4
+                            FD1S3AX        99           38.1
                                LUT4         1            0.0
                               TOTAL       149
 ----------------------------------------------------------------------
@@ -145,11 +128,11 @@ Instance Path : u_store.u_gpio_bank
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D       800           83.7
-                            FD1P3AX      3232           91.9
+                            FD1P3AX      1728           85.8
                             FD1P3AY        64           79.0
-                            FD1P3IX      1216           78.2
-                               LUT4      2015           56.7
-                              PFUMX        32           16.3
+                            FD1P3IX      2784           87.3
+                               LUT4      2066           55.2
+                              PFUMX        32           16.4
 SUB MODULES
              timingcard_pwm_channel         1
           timingcard_pwm_channel_U0         1
@@ -183,412 +166,396 @@ SUB MODULES
           timingcard_pwm_channel_U7         1
           timingcard_pwm_channel_U8         1
           timingcard_pwm_channel_U9         1
-                              TOTAL      7391
+                              TOTAL      7506
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[9].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U0.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[8].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U1.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[7].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U2.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[6].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U3.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[5].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U4.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[4].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U5.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[3].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U6.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[31].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U7.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[30].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U8.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[2].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U9.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[29].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U10.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[28].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U11.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[27].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U12.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[26].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U13.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[25].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U14.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[24].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U15.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[23].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U16.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[22].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U17.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[21].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U18.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[20].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U19.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[1].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U20.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[19].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U21.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[18].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U22.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[17].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U23.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[16].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U24.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[15].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U25.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[14].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U26.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[13].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U27.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[12].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U28.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[11].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U29.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[10].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_pwm_channel_U30.v1
 Instance Path : u_store.u_gpio_bank.gen_pwm_channels[0].u_pwm_channel
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        25            2.6
-                            FD1P3AX        48            1.4
                             FD1P3AY         1            1.2
-                            FD1P3IX        37            2.4
-                               LUT4        11            0.3
+                            FD1P3IX        86            2.7
+                               LUT4        14            0.4
                               PFUMX         1            0.5
-                              TOTAL       123
+                              TOTAL       127
 ----------------------------------------------------------------------
 Report for cell timingcard_event_queue.v1
 Instance Path : u_store.u_event_queue
                                   Cell usage:
                                cell     count   Res Usage(%)
                               CCU2D        47            4.9
-                            FD1P3IX       136            8.7
+                            FD1P3IX       168            5.3
                             FD1S3AX         6            2.3
                             FD1S3IX         1           14.3
-                               LUT4         8            0.2
+                               LUT4        40            1.1
                             PDPW8KC         3           42.9
-                              TOTAL       201
+                              TOTAL       265
 ----------------------------------------------------------------------
 Report for cell timingcard_action_queue.v1
 Instance Path : u_store.u_action_queue
                                   Cell usage:
                                cell     count   Res Usage(%)
                             FD1P3AY         1            1.2
-                            FD1P3IX        92            5.9
+                            FD1P3IX       125            3.9
                             FD1S3AX         6            2.3
                             FD1S3IX         1           14.3
-                               LUT4       120            3.4
+                               LUT4       156            4.2
                             PDPW8KC         4           57.1
-                              TOTAL       224
+                              TOTAL       293
+----------------------------------------------------------------------
+Report for cell timingcard_spi_decoder.v1
+Instance Path : u_spi_decoder
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                              CCU2D        27            2.8
+                            FD1P3AX       154            7.6
+                            FD1P3AY        16           19.8
+                            FD1P3IX        54            1.7
+                            FD1P3JX         1          100.0
+                            FD1S3AX         9            3.5
+                            FD1S3IX         5           71.4
+                               LUT4       607           16.2
+                              MUX21         4          100.0
+                              PFUMX        72           36.9
+                              TOTAL       949

@@ -5,4 +5,4 @@
 ../Core/Src/pump_card_app.c:64:13:pump_card_handle_command	32	static
 ../Core/Src/pump_card_app.c:123:6:pump_card_app_init	8	static
 ../Core/Src/pump_card_app.c:131:6:pump_card_app_poll	88	static
-../Core/Src/pump_card_app.c:154:6:pump_card_app_on_sync_edge	8	static
+../Core/Src/pump_card_app.c:155:6:pump_card_app_on_sync_edge	8	static

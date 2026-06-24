@@ -3,47 +3,38 @@ Report for cell top
    Instance path: top
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	    3021.00        100.0
-                                  LUT4	    3560.00        100.0
+                                  SLIC	    3170.00        100.0
+                                  LUT4	    3750.00        100.0
                                  IOBUF	         51        100.0
-                                PFUREG	       5421        100.0
+                                PFUREG	       5551        100.0
                                 RIPPLE	        956        100.0
                                    EBR	          7        100.0
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-             timingcard_schedule_store	          1        89.2
-                timingcard_spi_decoder	          1         9.3
----------------------------------------------------
-Report for cell timingcard_spi_decoder
-   Instance path: top/u_spi_decoder
-                     Cell usage:
-                                  cell	      count    Res Usage(%)
-                                  SLIC	     280.20         9.3
-                                  LUT4	     665.67        18.7
-                                PFUREG	        240         4.4
-                                RIPPLE	         27         2.8
+             timingcard_schedule_store	          1        90.3
+                timingcard_spi_decoder	          1         8.3
 ---------------------------------------------------
 Report for cell timingcard_schedule_store
    Instance path: top/u_store
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	    2693.28        89.2
-                                  LUT4	    2802.00        78.7
-                                PFUREG	       5132        94.7
+                                  SLIC	    2863.55        90.3
+                                  LUT4	    3062.00        81.7
+                                PFUREG	       5263        94.8
                                 RIPPLE	        929        97.2
                                    EBR	          7        100.0
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                timingcard_event_queue	          1         2.2
-              timingcard_spi_write_cdc	          1         2.0
-                  timingcard_gpio_bank	          1        72.0
-               timingcard_action_queue	          1         2.2
+              timingcard_spi_write_cdc	          1         1.7
+               timingcard_action_queue	          1         2.8
+                  timingcard_gpio_bank	          1        71.4
+                timingcard_event_queue	          1         2.6
 ---------------------------------------------------
 Report for cell timingcard_spi_write_cdc
    Instance path: top/u_store/u_write_cdc
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      61.83         2.0
+                                  SLIC	      52.33         1.7
                                   LUT4	       1.00         0.0
                                 PFUREG	        148         2.7
 ---------------------------------------------------
@@ -51,340 +42,340 @@ Report for cell timingcard_gpio_bank
    Instance path: top/u_store/u_gpio_bank
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	    2176.28        72.0
-                                  LUT4	    2015.00        56.6
-                                PFUREG	       4512        83.2
+                                  SLIC	    2262.13        71.4
+                                  LUT4	    2066.00        55.1
+                                PFUREG	       4576        82.4
                                 RIPPLE	        800        83.7
 SUB MODULES
                                   cell	      count    SLC Usage(%)
+             timingcard_pwm_channel_U2	          1         1.2
              timingcard_pwm_channel_U3	          1         1.4
-             timingcard_pwm_channel_U7	          1         1.2
+             timingcard_pwm_channel_U6	          1         1.2
              timingcard_pwm_channel_U8	          1         1.2
              timingcard_pwm_channel_U9	          1         1.2
+             timingcard_pwm_channel_U7	          1         1.2
+             timingcard_pwm_channel_U4	          1         1.3
              timingcard_pwm_channel_U5	          1         1.2
-             timingcard_pwm_channel_U6	          1         1.3
-             timingcard_pwm_channel_U4	          1         1.4
-            timingcard_pwm_channel_U30	          1         1.4
-            timingcard_pwm_channel_U20	          1         1.2
-            timingcard_pwm_channel_U24	          1         1.4
-            timingcard_pwm_channel_U26	          1         1.3
-            timingcard_pwm_channel_U28	          1         1.4
+            timingcard_pwm_channel_U30	          1         1.3
+            timingcard_pwm_channel_U25	          1         1.3
+            timingcard_pwm_channel_U27	          1         1.3
+            timingcard_pwm_channel_U28	          1         1.3
             timingcard_pwm_channel_U29	          1         1.3
-            timingcard_pwm_channel_U27	          1         1.4
-            timingcard_pwm_channel_U25	          1         1.4
-            timingcard_pwm_channel_U22	          1         1.3
+            timingcard_pwm_channel_U26	          1         1.3
             timingcard_pwm_channel_U23	          1         1.3
+            timingcard_pwm_channel_U24	          1         1.3
             timingcard_pwm_channel_U21	          1         1.3
-            timingcard_pwm_channel_U13	          1         1.2
-            timingcard_pwm_channel_U17	          1         1.2
-            timingcard_pwm_channel_U19	          1         1.3
-             timingcard_pwm_channel_U2	          1         1.3
-            timingcard_pwm_channel_U18	          1         1.2
-            timingcard_pwm_channel_U15	          1         1.2
-            timingcard_pwm_channel_U16	          1         1.2
-            timingcard_pwm_channel_U14	          1         1.2
-             timingcard_pwm_channel_U1	          1         1.3
-            timingcard_pwm_channel_U11	          1         1.2
+            timingcard_pwm_channel_U22	          1         1.3
+            timingcard_pwm_channel_U20	          1         1.3
+             timingcard_pwm_channel_U0	          1         1.6
             timingcard_pwm_channel_U12	          1         1.2
+            timingcard_pwm_channel_U16	          1         1.2
+            timingcard_pwm_channel_U18	          1         1.2
+            timingcard_pwm_channel_U19	          1         1.3
+            timingcard_pwm_channel_U17	          1         1.2
+            timingcard_pwm_channel_U14	          1         1.2
+            timingcard_pwm_channel_U15	          1         1.2
+            timingcard_pwm_channel_U13	          1         1.2
             timingcard_pwm_channel_U10	          1         1.2
+            timingcard_pwm_channel_U11	          1         1.2
+             timingcard_pwm_channel_U1	          1         1.5
                 timingcard_pwm_channel	          1         1.7
-             timingcard_pwm_channel_U0	          1         1.7
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_9..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      50.33         1.7
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      53.25         1.7
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U0
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_8..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      51.50         1.7
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      52.25         1.6
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U1
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_7..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.33         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      49.08         1.5
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U2
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_6..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      38.83         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.92         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U3
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_5..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.50         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      43.42         1.4
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U4
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_4..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.50         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      40.92         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U5
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_3..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.33         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.58         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U6
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_31..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      38.50         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.25         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U7
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_30..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.00         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.25         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U8
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_2..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.00         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.50         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U9
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_29..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.00         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.08         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U10
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_28..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.50         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.25         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U11
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_27..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      36.83         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.17         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U12
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_26..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.17         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      37.92         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U13
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_25..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.00         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.58         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U14
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_24..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      36.83         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.25         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U15
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_23..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.33         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.42         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U16
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_22..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      36.83         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.50         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U17
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_21..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.33         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.32         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U18
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_20..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      36.70         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      38.32         1.2
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U19
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_1..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.33         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.25         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U20
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_19..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      37.00         1.2
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      39.83         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U21
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_18..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      39.33         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.17         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U22
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_17..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.67         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.92         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U23
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_16..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.17         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.75         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U24
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_15..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.00         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.75         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U25
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_14..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.00         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.42         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U26
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_13..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      39.83         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.58         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U27
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_12..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.00         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.92         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U28
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_11..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.83         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.58         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U29
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_10..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      40.00         1.3
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.42         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_pwm_channel_U30
    Instance path: top/u_store/u_gpio_bank/gen_pwm_channels_0..u_pwm_channel
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      41.00         1.4
-                                  LUT4	      11.00         0.3
-                                PFUREG	         86         1.6
+                                  SLIC	      41.75         1.3
+                                  LUT4	      14.00         0.4
+                                PFUREG	         87         1.6
                                 RIPPLE	         25         2.6
 ---------------------------------------------------
 Report for cell timingcard_event_queue
    Instance path: top/u_store/u_event_queue
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      65.50         2.2
-                                  LUT4	       8.00         0.2
-                                PFUREG	        143         2.6
+                                  SLIC	      82.75         2.6
+                                  LUT4	      40.00         1.1
+                                PFUREG	        175         3.2
                                 RIPPLE	         47         4.9
                                    EBR	          3        42.9
 ---------------------------------------------------
@@ -392,7 +383,16 @@ Report for cell timingcard_action_queue
    Instance path: top/u_store/u_action_queue
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      66.75         2.2
-                                  LUT4	     120.00         3.4
-                                PFUREG	        100         1.8
+                                  SLIC	      87.33         2.8
+                                  LUT4	     156.00         4.2
+                                PFUREG	        133         2.4
                                    EBR	          4        57.1
+---------------------------------------------------
+Report for cell timingcard_spi_decoder
+   Instance path: top/u_spi_decoder
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  SLIC	     263.67         8.3
+                                  LUT4	     610.00        16.3
+                                PFUREG	        239         4.3
+                                RIPPLE	         27         2.8

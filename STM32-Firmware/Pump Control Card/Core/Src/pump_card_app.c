@@ -149,6 +149,7 @@ void pump_card_app_poll(void)
   }
 
   (void)HAL_SPI_Transmit(&hspi1, g_tx_frame, sizeof(g_tx_frame), HAL_MAX_DELAY);
+  pump_card_regs_service_post_response();
 }
 
 void pump_card_app_on_sync_edge(void)

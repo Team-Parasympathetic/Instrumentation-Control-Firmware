@@ -35,9 +35,9 @@ MSG_GET_CARD_INVENTORY = 0x15
 
 MODULE_GPIO_FPGA = 0x02
 GPIO_SET_WAVEFORM = 0x01
-GPIO_FORCE_LOW = 0x02
-GPIO_FORCE_HIGH = 0x03
-GPIO_STOP = 0x04
+GPIO_PULSE = 0x02
+GPIO_STOP = 0x03
+GPIO_MIRROR_SYNC = 0x04
 
 CARD_TYPE_FPGA = 0x02
 CARD_INVENTORY_ENTRY_SIZE = 7
@@ -187,12 +187,8 @@ def gpio_waveform_action(
     return build_action(MODULE_GPIO_FPGA, channel_id, GPIO_SET_WAVEFORM, payload)
 
 
-def gpio_force_low_action(channel_id: int) -> bytes:
-    return build_action(MODULE_GPIO_FPGA, channel_id, GPIO_FORCE_LOW, b"")
-
-
-def gpio_force_high_action(channel_id: int) -> bytes:
-    return build_action(MODULE_GPIO_FPGA, channel_id, GPIO_FORCE_HIGH, b"")
+def gpio_pulse_action(channel_id: int) -> bytes:
+    return build_action(MODULE_GPIO_FPGA, channel_id, GPIO_PULSE, b"")
 
 
 def gpio_stop_action(channel_id: int) -> bytes:
@@ -365,14 +361,14 @@ def build_mock_schedule() -> list[MockEvent]:
         MockEvent(
             event_id=1,
             timestamp_us=500_000,
-            description="t=0.5s: channel 0 FORCE_HIGH",
-            actions=[gpio_force_high_action(0)],
+            description="t=0.5s: channel 0 PULSE",
+            actions=[gpio_pulse_action(0)],
         ),
         MockEvent(
             event_id=2,
             timestamp_us=1_500_000,
-            description="t=1.5s: channel 0 FORCE_LOW",
-            actions=[gpio_force_low_action(0)],
+            description="t=1.5s: channel 0 STOP",
+            actions=[gpio_stop_action(0)],
         ),
         MockEvent(
             event_id=3,
@@ -389,14 +385,14 @@ def build_mock_schedule() -> list[MockEvent]:
         MockEvent(
             event_id=5,
             timestamp_us=5_000_000,
-            description="t=5.0s: channel 1 FORCE_HIGH and channel 2 FORCE_LOW",
-            actions=[gpio_force_high_action(1), gpio_force_low_action(2)],
+            description="t=5.0s: channel 1 PULSE",
+            actions=[gpio_pulse_action(1)],
         ),
         MockEvent(
             event_id=6,
             timestamp_us=6_500_000,
-            description="t=6.5s: channel 1 STOP and channel 2 STOP",
-            actions=[gpio_stop_action(1), gpio_stop_action(2)],
+            description="t=6.5s: channel 1 STOP",
+            actions=[gpio_stop_action(1)],
         ),
     ]
 

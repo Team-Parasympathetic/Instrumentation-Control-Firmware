@@ -19,10 +19,11 @@ module timingcard_schedule_store #(
     output reg         sync_state
 );
 
-    localparam [1:0] RUN_IDLE = 2'd0;
-    localparam [1:0] RUN_LOAD = 2'd1;
-    localparam [1:0] RUN_PREP = 2'd2;
-    localparam [1:0] RUN_WAIT = 2'd3;
+    localparam [2:0] RUN_IDLE = 3'd0;
+    localparam [2:0] RUN_LOAD = 3'd1;
+    localparam [2:0] RUN_PREP = 3'd2;
+    localparam [2:0] RUN_WAIT = 3'd3;
+    localparam [2:0] RUN_FINISH = 3'd4;
     localparam [INDEX_WIDTH-1:0] MAX_COUNT = MAX_EVENTS[INDEX_WIDTH-1:0];
     localparam [INDEX_WIDTH-1:0] ONE_INDEX = {{INDEX_WIDTH-1{1'b0}}, 1'b1};
     localparam [TIMER_WIDTH-1:0] ZERO_TIMER = {TIMER_WIDTH{1'b0}};
@@ -33,7 +34,7 @@ module timingcard_schedule_store #(
     reg [31:0] card_error_flags;
     reg        card_control_run;
 
-    reg [1:0]             run_state;
+    reg [2:0]             run_state;
     reg [INDEX_WIDTH-1:0] event_head;
     reg [INDEX_WIDTH-1:0] action_head;
     reg [INDEX_WIDTH-1:0] global_event_index;
@@ -65,6 +66,7 @@ module timingcard_schedule_store #(
     wire        event_push_seen;
     wire [31:0] last_event_time_lo;
     wire [31:0] last_event_time_hi;
+    wire [31:0] event_checksum;
     wire [TIMER_WIDTH-1:0] event_head_delta_ticks;
 
     wire [31:0] action_stage_event_index;
@@ -74,10 +76,11 @@ module timingcard_schedule_store #(
     wire [INDEX_WIDTH-1:0] action_count;
     wire        action_push_seen;
     wire [31:0] last_action_event_index;
+    wire [31:0] action_checksum;
     wire        action_head_valid;
     wire [INDEX_WIDTH-1:0] action_head_event_index;
     wire [4:0]  action_head_channel;
-    wire [3:0]  action_head_control;
+    wire [4:0]  action_head_control;
     wire [31:0] action_head_phase_step;
     wire [DUTY_WIDTH-1:0] action_head_duty_threshold;
     wire        action_head_phase_step_zero;
@@ -151,7 +154,8 @@ module timingcard_schedule_store #(
         .count           (event_count),
         .push_seen       (event_push_seen),
         .last_time_lo    (last_event_time_lo),
-        .last_time_hi    (last_event_time_hi)
+        .last_time_hi    (last_event_time_hi),
+        .checksum        (event_checksum)
     );
 
     timingcard_action_queue #(
@@ -175,6 +179,7 @@ module timingcard_schedule_store #(
         .count                   (action_count),
         .push_seen               (action_push_seen),
         .last_event_index        (last_action_event_index),
+        .checksum                (action_checksum),
         .head_valid              (action_head_valid),
         .head_event_index        (action_head_event_index),
         .head_channel            (action_head_channel),
@@ -198,6 +203,7 @@ module timingcard_schedule_store #(
         .preload_phase_step_zero     (action_head_phase_step_zero),
         .preload_duty_threshold_full (action_head_duty_threshold_full),
         .commit_event                (event_due),
+        .sync_state                  (sync_state),
         .channel_level_bits          (channel_level_bits)
     );
 
@@ -260,6 +266,10 @@ module timingcard_schedule_store #(
                 read_data = last_event_time_hi;
             end
 
+            `FPGA_EVENT_REG_CHECKSUM: begin
+                read_data = event_checksum;
+            end
+
             `FPGA_ACTION_REG_EVENT_INDEX: begin
                 read_data = action_stage_event_index;
             end
@@ -289,6 +299,10 @@ module timingcard_schedule_store #(
 
             `FPGA_ACTION_REG_LAST_EVENT_INDEX: begin
                 read_data = last_action_event_index;
+            end
+
+            `FPGA_ACTION_REG_CHECKSUM: begin
+                read_data = action_checksum;
             end
 
             default: begin
@@ -389,15 +403,19 @@ module timingcard_schedule_store #(
                         global_event_index <= global_event_index + ONE_INDEX;
 
                         if (event_head_next >= event_count) begin
-                            card_control_run <= 1'b0;
-                            run_state <= RUN_IDLE;
-                            run_done <= 1'b1;
+                            run_state <= RUN_FINISH;
                         end else begin
                             run_state <= RUN_LOAD;
                         end
                     end else if (event_countdown != ZERO_TIMER) begin
                         event_countdown <= event_countdown - ONE_TIMER;
                     end
+                end
+
+                RUN_FINISH: begin
+                    card_control_run <= 1'b0;
+                    run_state <= RUN_IDLE;
+                    run_done <= 1'b1;
                 end
 
                 default: begin

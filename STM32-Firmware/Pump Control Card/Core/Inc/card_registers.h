@@ -16,7 +16,7 @@ extern "C" {
 #define CARD_CAP_PUMP_PERISTALTIC        0x0001U
 
 #define PUMP_CARD_FW_MAJOR               0x01U
-#define PUMP_CARD_FW_MINOR               0x00U
+#define PUMP_CARD_FW_MINOR               0x01U
 #define PUMP_CARD_MAX_LOCAL_EVENTS       48U
 
 #define CARD_REG_ID                      0x0000U
@@ -35,6 +35,7 @@ extern "C" {
 
 #define PUMP_CARD_CONTROL_RUN            0x00000001UL
 #define PUMP_CARD_CONTROL_CLEAR_QUEUE    0x00000002UL
+#define PUMP_CARD_CONTROL_PRELOAD_DAC    0x00000004UL
 
 #define PUMP_CARD_STATUS_RUNNING         0x00000001UL
 #define PUMP_CARD_STATUS_DONE            0x00000002UL
@@ -47,6 +48,7 @@ extern "C" {
 #define PUMP_QUEUE_REG_COUNT             0x0210U
 #define PUMP_QUEUE_REG_STATUS            0x0214U
 #define PUMP_QUEUE_REG_LAST_EVENT_INDEX  0x0218U
+#define PUMP_QUEUE_REG_CHECKSUM          0x021CU
 
 #define PUMP_QUEUE_STATUS_FULL           0x00000001UL
 #define PUMP_QUEUE_STATUS_PUSH_SEEN      0x00000002UL
